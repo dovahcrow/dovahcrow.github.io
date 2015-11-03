@@ -1,0 +1,13 @@
+sudo: false
+language: go
+install:
+  - go install github.com/spf13/hugo
+script:
+  - hugo --theme=hyde
+  - cp public ../
+  - yes|rm -r .*
+  - cp ../public/* ./
+  - git commit -a -m "generate content"
+  - git checkout -b master
+  - git push origin master -f
+  
