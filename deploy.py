@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 import subprocess, os
 def run(*args):
     ret = subprocess.call(args,  stdout=sys.stdout, stderr=sys.stderr)
