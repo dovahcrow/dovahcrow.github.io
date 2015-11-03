@@ -24,9 +24,9 @@ for (dirpath, dirnames, filenames) in os.walk("."):
         if filename != '.gitignore':
             os.remove(filename)
     break
-for (_, dirnames, filenames) in os.walk("public"):
+for (path, dirnames, filenames) in os.walk("public"):
     for item in chain(dirnames, filenames):
-        shutil.move(item, ".")
+        shutil.move(path + "/" + item, ".")
     break
 shutil.rmtree('public')
 
