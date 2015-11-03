@@ -22,7 +22,7 @@ for (dirpath, dirnames, filenames) in os.walk("."):
             shutil.rmtree(folder)
     for filename in filenames:
         if filename != '.gitignore':
-            shutil.rmtree(filename)
+            os.remove(filename)
     break
 for (_, dirnames, filenames) in os.walk("public"):
     for item in chain(dirnames, filenames):
