@@ -4,14 +4,8 @@ install:
   - go get -u github.com/spf13/hugo
   - go install github.com/spf13/hugo
 script:
+  - echo 'generate contents'
   - hugo --theme=hyde
-  - git config user.email "doomsplayer@gmail.com"
-  - git config user.name "Wu Young"
-  - git checkout --orphan master
-  - mv public/* ./
-  - yes | rm -r archetypes config.toml content data layouts static themes .travis.yml public || true
-  - git add -A
-  - git commit -a -m "generate content"
   - ./deploy.py
 env:
   global:
