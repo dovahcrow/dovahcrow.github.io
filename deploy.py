@@ -16,7 +16,7 @@ print('checkout to master')
 run('git', 'checkout', '--orphan', 'master')
 
 print('clean up directory')
-for (dirpath, dirnames, filenames) in walk("."):
+for (dirpath, dirnames, filenames) in os.walk("."):
     for folder in dirnames:
         if folder not in ['public', '.git']:
             shutil.rmtree(folder)
@@ -24,7 +24,7 @@ for (dirpath, dirnames, filenames) in walk("."):
         if filename != '.gitignore':
             shutil.rmtree(filename)
     break
-for (_, dirnames, filenames) in walk("public"):
+for (_, dirnames, filenames) in os.walk("public"):
     for item in chain(dirnames, filenames):
         shutil.move(item, ".")
     break
