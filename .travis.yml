@@ -9,7 +9,7 @@ script:
   - git config user.name "Wu Young"
   - git checkout --orphan master
   - mv public/* ./
-  - yes | rm -r archetypes config.toml content data layouts static themes .travis.yml public
+  - yes | rm -r archetypes config.toml content data layouts static themes .travis.yml public || true
   - git add -A
   - git commit -a -m "generate content"
   - ./deploy.py
