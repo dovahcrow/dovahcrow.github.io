@@ -5,6 +5,7 @@ install:
   - go install github.com/spf13/hugo
 script:
   - hugo --theme=hyde
+  - ls
   - git config user.email "doomsplayer@gmail.com"
   - git config user.name "Wu Young"
   - git checkout --orphan master
