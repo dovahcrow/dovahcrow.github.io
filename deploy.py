@@ -9,8 +9,12 @@ def run(*args):
 
 token = os.environ['GH_TOKEN']
 repo = os.environ['TRAVIS_REPO_SLUG']
+email = os.environ['USER_EMAIL']
+name = os.environ['USER_NAME']
 
 print('uploading site...')
+run('git', 'config', 'user.email', email)
+run('git', 'config', 'user.name', name)
 
 print('checkout to master')
 run('git', 'checkout', '--orphan', 'master')
