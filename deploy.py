@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import subprocess, os
+import subprocess, os, sys
 def run(*args):
     ret = subprocess.call(args,  stdout=sys.stdout, stderr=sys.stderr)
     if ret != 0:
