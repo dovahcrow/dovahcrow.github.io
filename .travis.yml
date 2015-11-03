@@ -5,14 +5,11 @@ install:
   - go install github.com/spf13/hugo
 script:
   - hugo --theme=hyde
-  - mv public deploy.py ../
-  - yes|rm -r ./*
-  - mv ../public/* ./
   - git config user.email "doomsplayer@gmail.com"
   - git config user.name "Wu Young"
+  - git checkout --orphan master
+  - yes | rm -r archetypes config.toml content data deploy.py layouts static themes .travis.yml
   - git commit -a -m "generate content"
-  - git branch -D master
-  - git checkout -b master
   - ../deploy.py
 env:
   global:
