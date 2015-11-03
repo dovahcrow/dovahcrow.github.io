@@ -11,9 +11,11 @@ script:
   - git config user.email "doomsplayer@gmail.com"
   - git config user.name "Wu Young"
   - git commit -a -m "generate content"
+  - git branch -D master
   - git checkout -b master
   - git push http://$GH_TOKEN@github.com/doomsplayer.github.io.git master -f
 env:
-  - secure: gD4LRHJRYbhFpW9HMOerI9ShVtQNWl9uJ7kTjPcpmfmLAHy5NaFJKFTPzglAEiokEQUnQeflku/9vp1pnd+2vny+o7WfDjC+2mRoM2u9/1e+ySd8JLI7ww8WA9GisxR4Mxn5aS/Lwfkig4a+noKbBsLcERAdd4XuPOfjk+OS3g5kseVVzTDMZ7bDn+FhmyE80lXO7qYscO2nnyKXMC6/J2uq7TBeTZq6Dx+r20d3F8nrS/keKjDyABS154qAC0V5RokfKOK20Ruy8M+fO9/Kkz9J1Tp5jou/TqWXhyR/5ozCkPjZUhPeVdTWgXcRLBAirh+aMTnRQjflrsBDgyMXn8ylEnhYnd18xcJXdPP69p1gjIlCot2xihok5Ok7sybnQbwqu6PT06VN+hVs57cWZBq4oivJFxJEwDprYbJJ1DdUVAN29qFPFu3RcnmlfWDwU2/f6CZukZcSmzgMlY20dZpgMLXC8CpnBMUlqhkSpNTiYDwcO3TuFCMj1bPjjavtbwkukTGl/YiBxIjWeQKsGxA89PQSHi1DCtbRtAoeH0+5M6Wj2pncHisUjht6J7FzkMDIYgRzVFmQwu9qqrL7cQPx67iwheeuWyPfLF/I6OwPmDpYrKXjqVy/lh6x3m8PDmNIS2W8cZw2J3YJP9Fn3enRHzlfUcaAP/kNKWJ0CGM=
+  global:
+    - secure: gD4LRHJRYbhFpW9HMOerI9ShVtQNWl9uJ7kTjPcpmfmLAHy5NaFJKFTPzglAEiokEQUnQeflku/9vp1pnd+2vny+o7WfDjC+2mRoM2u9/1e+ySd8JLI7ww8WA9GisxR4Mxn5aS/Lwfkig4a+noKbBsLcERAdd4XuPOfjk+OS3g5kseVVzTDMZ7bDn+FhmyE80lXO7qYscO2nnyKXMC6/J2uq7TBeTZq6Dx+r20d3F8nrS/keKjDyABS154qAC0V5RokfKOK20Ruy8M+fO9/Kkz9J1Tp5jou/TqWXhyR/5ozCkPjZUhPeVdTWgXcRLBAirh+aMTnRQjflrsBDgyMXn8ylEnhYnd18xcJXdPP69p1gjIlCot2xihok5Ok7sybnQbwqu6PT06VN+hVs57cWZBq4oivJFxJEwDprYbJJ1DdUVAN29qFPFu3RcnmlfWDwU2/f6CZukZcSmzgMlY20dZpgMLXC8CpnBMUlqhkSpNTiYDwcO3TuFCMj1bPjjavtbwkukTGl/YiBxIjWeQKsGxA89PQSHi1DCtbRtAoeH0+5M6Wj2pncHisUjht6J7FzkMDIYgRzVFmQwu9qqrL7cQPx67iwheeuWyPfLF/I6OwPmDpYrKXjqVy/lh6x3m8PDmNIS2W8cZw2J3YJP9Fn3enRHzlfUcaAP/kNKWJ0CGM=
 
   
