@@ -10,5 +10,5 @@ script:
 env:
   global:
     secure: SBY4OtCaGgjb9wRC+BH1IhmNTfZ6AekP59kplM/Af1dkMkURCRXNmD53hYZAgBkbsy9rDv9VB7PegsPc/5CqoXqVW8c3+cuHZYeXo3P8uxOSGhWeW0CojrBBVDfJanUBmBSZ2ZyVXnR6DZkaNcUEKp9h3E1j2YKjLTVXuwJ7Gg+A8AwuJgjyB0KGk3BCIHVdlL4SvkEuV0TgWMMIfUFyBqH9XtchoeGN+Ff7U1iH/LxikgyVlYhqBXn0tkNfofAwygcA/O3Vohe35o5idTe7YKOhZ14lY/dkaxDCdNGlWzKolZkhFXeDE7m9pFDhSnieJQe2q5opYbL8q2PjBkVbRa45P9Mxcg5UNEqQF6tutP+5Is4ykvaJkAGIkfc4xQXAXtzJpmLCFjXKs4ZWhecoYnekVk7uLmY4L1eQsCTi5Tb8QfUMB/UjUYS0yd1y6IxMSkujF/lsXwmE+xPxhVimqPHETkGN64ttiFOIIn6zbQQou60dpFAGaC+0ONtOJFAZMWlALWwXNtxeNNr4hSo7FrAOpxcY7XdrZmkCxtjoX+x9mcK+q3m6sSZnvj4X5oH6xx8ZgZQ1+lKHZRtdOXxVPwRgjNOpgVMMqOmdtrjaTKvCjIDVurzLpI8nLj8mXzlh0jYcnZENtWmNTpKCMNN5kkfRo523N3Ng5Wq8w8G07hs=
-    USER_EMAIL: doomsplayer@gmail.com
-    USER_NAME: Wu Young
+    - USER_EMAIL=doomsplayer@gmail.com
+    - USER_NAME="Wu Young"
