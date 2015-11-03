@@ -5,7 +5,6 @@ install:
 - go install github.com/spf13/hugo
 script:
 - hugo --theme=hyde
-after_success:
 - mv public ../
 - yes|rm -r ./*
 - mv ../public/* ./
