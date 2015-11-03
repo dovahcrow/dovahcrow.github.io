@@ -6,10 +6,12 @@ install:
 script:
   - hugo --theme=hyde
   - ls
+  - ls public
   - git config user.email "doomsplayer@gmail.com"
   - git config user.name "Wu Young"
   - git checkout --orphan master
-  - yes | rm -r archetypes config.toml content data deploy.py layouts static themes .travis.yml
+  - mv public/* ./
+  - yes | rm -r archetypes config.toml content data layouts static themes .travis.yml public
   - git commit -a -m "generate content"
   - ../deploy.py
 env:
