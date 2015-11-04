@@ -14,10 +14,10 @@ title: rust enum
 ---
 
 本文通过解析`llvm`的`ir`来解析rust `enum`的内存布局。
-
+<!--more-->
 rust的enum差不多是C的`enum`和`union`类型的混合体。可以写成
 
-```rust\
+```rust
 enum Enum {
     AEnum = 0,
     BEnum = 1,

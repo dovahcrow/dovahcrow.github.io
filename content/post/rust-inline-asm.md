@@ -19,6 +19,8 @@ rust和c/c++一样,可以内联汇编.语法和c/c++的内联汇编大致一样.
 
 然后在`asm!`宏里面写汇编即可.
 
+<!--more-->
+
 格式是:
 
 	asm!(assembly template
