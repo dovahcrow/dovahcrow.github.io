@@ -6,6 +6,7 @@ install:
 script:
   - echo 'generate contents'
   - hugo
+after_success:
   - ./deploy.py
 env:
   global:
