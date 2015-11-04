@@ -1,0 +1,31 @@
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    {{ partial "socialbtns.html" . }}
+                </div>
+                <div class="mdl-mini-footer--right-section">
+                    <span>© {{ .Site.Params.copyrightyear }} {{ .Site.Params.name }}</span>
+                </div>
+            </footer>
+        </main>
+        <div class="mdl-layout__obfuscator"></div>
+    </div>
+    <script src="/js/material.min.js"></script>
+    {{ if .IsPage }} {{ if ( eq .Type "post" ) }}<script src="/js/prism.js"></script>{{ end }}{{ end }}
+    {{ if .IsNode }} {{ partial "JS-cardmedia.html" . }} {{ partial "JS-fabbutton.html" . }}{{end}}
+</body>
+    {{ with .Site.Params.googleAnalytics }}
+    {{ "<!-- Google Analytics -->" | safeHTML }}
+    <script>
+      var _gaq=[['_setAccount','{{ . }}'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+    {{ end }}
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</html>

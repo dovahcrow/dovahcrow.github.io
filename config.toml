@@ -1,3 +1,23 @@
 baseurl = "http://doomsplayer.github.io/"
 languageCode = "en-us"
 title = "iris"
+theme = "HugoMDL"
+MetaDataFormat = "yaml"
+
+[permalinks]
+page = "/:title/"
+about = "/:filename/"
+
+[params]
+name = "Wu Young"
+description = "Something valuable to write down"
+image = "/images/avatar-192x210.png" #for frontpage profile card
+website = "wooya.me"
+email = "doomsplayer@gmail.com"
+github = "https://github.com/doomsplayer"
+linkedin = "https://cn.linkedin.com/in/wooya"
+copyrightyear = "2015"
+frontpageposts = 5
+disqusShortname = "wooyame"
+googleAnalytics = "UA-64002783-1"
+enableRSS = true
