@@ -1,0 +1,3 @@
+[submodule "themes/HugoMDL"]
+	path = themes/HugoMDL
+	url = https://github.com/jchatkinson/HugoMDL/
