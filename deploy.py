@@ -25,7 +25,7 @@ for (dirpath, dirnames, filenames) in os.walk("."):
         if folder not in ['public', '.git']:
             shutil.rmtree(folder)
     for filename in filenames:
-        if filename not in ['.gitignore', 'CNAME']:
+        if filename not in ['.gitignore', 'CNAME', 'README.md']:
             os.remove(filename)
     break
 for (path, dirnames, filenames) in os.walk("public"):
