@@ -5,7 +5,7 @@ install:
   - go install github.com/spf13/hugo
 script:
   - echo 'generate contents'
-  - hugo --theme=polymer
+  - hugo
   - ./deploy.py
 env:
   global:
