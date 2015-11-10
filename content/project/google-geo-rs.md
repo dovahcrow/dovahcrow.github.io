@@ -6,9 +6,7 @@ author:
   image: /images/avatar.png
   name: Wu Young
   website: http://wooya.me
-#cardbackground: '#222444'
-#cardheaderimage: /images/default.jpg
-#cardthumbimage: /images/default-small.jpg
+cardbackground: '#63899A'
 categories:
 - project
 date: 2015-11-04T12:10:40+08:00

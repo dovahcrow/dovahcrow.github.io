@@ -1,7 +1,7 @@
 ---
 categories:
     - "post"
-cardbackground: "#268368" #optional: overwrites default #263238, only shows when no image specified.
+cardbackground: '#3B4D7D'
 author:
     name: Wu Young
     description: "The fortune teller"

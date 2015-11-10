@@ -10,7 +10,5 @@ author:
     github: "https://github.com/doomsplayer"
     image: "/images/avatar.png"
     website: "http://wooya.me"
-cardbackground: "#222444"
-cardthumbimage: "/images/default-small.jpg"
-cardheaderimage: "/images/default.jpg"
+cardbackground: "#63899A"
 ---

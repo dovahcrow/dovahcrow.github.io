@@ -10,7 +10,7 @@ tags:
 - "phantom type"
 #cardimagelg: "/images/default.jpg"
 #cardimagesm: "/images/default.jpg"
-cardbackground: "#268368" #optional: overwrites default #263238, only shows when no image specified.
+cardbackground: '#3B4D7D'
 author:
     name: "wooya"
     description: "The fortune teller"

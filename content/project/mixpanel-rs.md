@@ -6,9 +6,7 @@ author:
   image: /images/avatar.png
   name: Wu Young
   website: http://wooya.me
-
-#cardheaderimage: /images/default.jpg
-#cardthumbimage: https://cdn.mxpnl.com/cache/5e06759412fa8089233db3e218b902b7/images/homepage/2013/heroes/segmentation/dude.png
+cardbackground: '#63899A'
 categories:
 - project
 date: 2015-11-04T12:12:21+08:00

@@ -6,7 +6,7 @@ author:
   image: /images/avatar-64x64.png
   name: Wu Young
   website: http://wooya.me
-cardbackground: '#268368'
+cardbackground: '#3B4D7D'
 categories:
 - post
 date: 2015-11-04T11:51:39+08:00

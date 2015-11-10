@@ -15,10 +15,7 @@ author:
     image: "/images/avatar.png"
     name: Wu Young
     website: "http://wooya.me"
-#cardbackground: "#222444"
-#cardthumbimage: "/images/default-small.jpg"
-#cardheaderimage: "/images/default.jpg"
-#cardtitlecolor: "#fafafa"
+cardbackground: '#63899A'
 ---
 
 The keen.io binding for Rust-lang, which is built for boosting the speed of the analytics page in Strikingly.com
