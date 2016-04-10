@@ -56,7 +56,7 @@ A
 因为多继承必然会带来方法冲突等问题从而导致方法搜索失败, 所以必须规定一个方法搜索顺序防止冲突, 线性的从最底部叶
 子类开始向上搜索方法直到找到或失败. 这就要求把一棵继承树变化成一个一维的线性结构.
 
-在python中线性化的算法是一种叫做`C3`的算法. 来自论文(A Monotonic Superclass Linearization for Dylan)[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.3910].
+在python中线性化的算法是一种叫做`C3`的算法. 来自论文[A Monotonic Superclass Linearization for Dylan](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.3910).
 
 它的描述如下(来自wikipedia):
 > 对于以下的类型:
