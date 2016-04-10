@@ -12,7 +12,7 @@ RSSUri = "feed.xml"
   Name = "Wu Young"
 
 [Params]
-  AuthorHomepage = "http://wooya.me"
+  AuthorHomepage = "http://wooya.me/"
   BottomIntroduce = "The Fortune Teller"
   Description = "Something valuable to write down"
   Subtitle = "Thought is nothing"
