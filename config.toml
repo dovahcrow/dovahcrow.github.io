@@ -1,4 +1,4 @@
-BaseURL = "http://wooya.me"
+BaseURL = "http://wooya.me/"
 LanguageCode = "en-us"
 MetaDataFormat = "yaml"
 HasCJKLanguage = true
