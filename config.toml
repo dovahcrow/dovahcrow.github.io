@@ -1,16 +1,74 @@
-baseurl = "http://wooya.me"
-languageCode = "en-us"
-title = "iris"
-theme = "HugoMDL"
+BaseURL = "http://wooya.me"
+LanguageCode = "en-us"
 MetaDataFormat = "yaml"
+HasCJKLanguage = true
+Title = "IRIS"
+Theme = "hugo-pacman-theme"
+pygmentsStyle = "default"
+pygmentsUseClasses = true
+RSSUri = "feed.xml"
 
-[permalinks]
-page = "/:title/"
-about = "/:filename/"
+[Author]
+  Name = "Wu Young"
+
+[Params]
+  AuthorHomepage = "http://wooya.me"
+  BottomIntroduce = "The Fortune Teller"
+  Description = "Something valuable to write down"
+  Subtitle = "Thought is nothing"
+  #Weibo = "coderzh"
+  #WeiboID = 1816308191
+  #Twitter = "coderzh"
+  GitHub = "doomsplayer"
+  #Facebook = "coderzh"
+  LinkIn = "wooya"
+  Imglogo = "images/neural.png"
+  AuthorImg = "images/gopher.jpg"
+  # 日期时间格式
+  DateFormat = "2006-01-02"
+  MonthFormat = "2006-01"
+  FancyBox = true
+
+  # 使用多说评论
+  #[Params.DuoShuo]
+  #  ShortName = "coderzh"
+
+  # 使用 Disqus 评论
+  [Params.Disqus]
+    ShortName = "wooyame"
+
+  # Google 统计
+  [Params.GoogleAnalytics]
+    ID = "UA-64002783-1"
+
+  # 多语言字符串
+  [Params.Strings]
+    Search = "搜索"
+    PageNotFound = "你访问的页面不存在"
+    ShowSideBar = "显示侧边栏"
+    HideSideBar = "隐藏侧边栏"
+    Categories = "分类"
+    Archive = "归档"
+    Tags = "标签"
+    TagCloud = "标签云"
+    Rss = "RSS 订阅"
+    TableOfContents = "文章目录"
+
+[Menu]
+  [[Menu.Main]]
+    Name = "首页"
+    URL = "/"
+    Weight = 1
+  [[Menu.Main]]
+    Name = "关于"
+    URL = "/about"
+    Weight = 2
+
+
+
+
 
 [params]
-name = "Wu Young"
-description = "Something valuable to write down"
 image = "/images/avatar-192x210.png" #for frontpage profile card
 website = "wooya.me"
 email = "doomsplayer@gmail.com"
