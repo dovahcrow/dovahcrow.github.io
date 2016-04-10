@@ -10,6 +10,7 @@ cardbackground: '#3B4D7D'
 categories:
 - post
 - python
+tag:
 - linearization
 date: 2016-04-09T17:35:01+08:00
 title: python c3 linearization

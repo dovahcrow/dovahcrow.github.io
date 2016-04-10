@@ -1,8 +1,6 @@
 ---
 categories:
     - "project"
-tags:
-    - "project"
 author:
     name: "Wu Young"
     description: "The fortune teller"
@@ -10,5 +8,4 @@ author:
     github: "https://github.com/doomsplayer"
     image: "/images/avatar.png"
     website: "http://wooya.me"
-cardbackground: "#63899A"
 ---

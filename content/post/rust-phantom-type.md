@@ -1,30 +1,28 @@
 ---
-draft: false
-title: "说说Phantom Type"
-description: "Lets talk about phantom typen"
-date: "2015-11-02T10:36:23+08:00"
-categories:
-- "post"
-tags:
-- "rust"
-- "phantom type"
-#cardimagelg: "/images/default.jpg"
-#cardimagesm: "/images/default.jpg"
-cardbackground: '#3B4D7D'
 author:
     name: "wooya"
     description: "The fortune teller"
     website: "http://wooya.me"
     email: "doomsplayer@gmail.com"
     github: "https://github.com/doomsplayer"
-    image: "/images/avatar-64x64.png"
+title: 说说Phantom Type
+description: Lets talk about phantom typen
+date: "2015-11-02T10:36:23+08:00"
+categories:
+- post
+- rust
+tags:
+- phantom type
+- type system
 ---
 
 在具有高级类型系统的语言里面，有一种类型标记的用法叫phantom type,
 比如[Haskell语言](http://www.haskell.org/haskellwiki/Phantom_type)。这种用法有个很有意思用途：用来做编译时的类型检查，并且对于编译后的代码来说，完全没有任何的副作用。
 
-举个例子，在做几何运算的时候，我们会碰到运算时变量单位的问题。
 <!--more-->
+
+举个例子，在做几何运算的时候，我们会碰到运算时变量单位的问题。
+
 ```rust
 #[deriving(Show)]
 struct Length<Num>(Num);

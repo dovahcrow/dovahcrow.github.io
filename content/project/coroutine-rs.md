@@ -6,12 +6,13 @@ author:
   image: /images/avatar.png
   name: Wu Young
   website: http://wooya.me
-cardbackground: '#63899A'
+date: 2015-11-04T12:03:11+08:00
 categories:
 - project
-date: 2015-11-04T12:03:11+08:00
 tags:
-- project
+- system
+- io
+- parallel
 repo: "http://github.com/rustcc/coroutine-rs.git"
 title: coroutine-rs
 ---

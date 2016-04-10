@@ -4,27 +4,32 @@ author:
   description: The fortune teller
   email: doomsplayer@gmail.com
   github: https://github.com/doomsplayer
-  image: /images/avatar-64x64.png
   name: Wu Young
   website: http://wooya.me
 cardbackground: '#3B4D7D'
 categories:
 - post
+- rust
+rags:
+- OO
+- generic
 date: 2015-11-04T11:49:25+08:00
 title: rust object
 ---
 
 rust有非常强大的类型系统。今天我们来说说rust的泛型。
+<!--more-->
+
 rust有两种泛型：
 
 1. 基于`static 
 dispatch`的泛型，类似于C++的模板。在编译期进行代码特化（monomorphization），为每一种类型生成一份代码。好处是执行效率高，但是会带来额外的冗余代码，使二进制文件变大（bloat）。
 
 2. 基于`dynamic 
-dispatch`的泛型，类似于java和go的`interface`。在运行期查找虚表（vtable）来选择执行的方法。好处是使用灵活，但是性能肯定比static 
-dispatch来的差。本篇着重介绍这一种泛型。
-<!--more-->
-============================================
+dispatch`的泛型，类似于java和go的`interface`。在运行期查找虚表（vtable）来选择执行的方法。好处是使用灵活，但是性能肯定比static dispatch来的差。本篇着重介绍这一种泛型。
+
+<hr/>
+
 * Trait Object
 
  rust的`dynamic dispatch`实现都是基于一种叫做`trait object`的类型来实现的。先看一个例子：

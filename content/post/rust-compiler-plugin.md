@@ -9,6 +9,9 @@ author:
 cardbackground: '#3B4D7D'
 categories:
 - post
+- rust
+tags:
+- compiler
 date: 2015-11-04T11:54:16+08:00
 title: rust compiler plugin
 ---
@@ -16,6 +19,8 @@ title: rust compiler plugin
 rust 提供了一个很强大的编译时功能：自定义编译器插件。
 
 通过向编译器register一个函数作为入口，它可以在lint时期把ast作为register的那个函数的一个参数来invoke。也就是说，通过编译器插件，我们可以做很多强（wei）大（suo）的事情。
+
+<!--more-->
 
 * 例子1：[rust-chamber](https://github.com/brson/rust-chamber)
 

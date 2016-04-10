@@ -9,6 +9,9 @@ author:
 cardbackground: '#3B4D7D'
 categories:
 - post
+- rust
+tags:
+- asm
 date: 2015-11-04T11:53:30+08:00
 title: rust inline asm
 ---

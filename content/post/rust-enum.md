@@ -3,12 +3,14 @@ author:
   description: The fortune teller
   email: doomsplayer@gmail.com
   github: https://github.com/doomsplayer
-  image: /images/avatar-64x64.png
   name: Wu Young
   website: http://wooya.me
-cardbackground: '#3B4D7D'
 categories:
 - post
+- rust
+tags:
+- enum
+- memory detail
 date: 2015-11-04T11:51:39+08:00
 title: rust enum
 ---
