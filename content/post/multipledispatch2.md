@@ -22,8 +22,8 @@ title: multipledispatch2
 
 然后用久了感觉有几个不方便:
 
-    1. `multipledispatch`不支持函数参数的类型签名. `python 3.5`加入了`typing`库, 表示`def foo(bar: int, baz: str) -> list`这种写法是官方提倡的, 然而multipledispatch却不支持这种写法.
-    2. `multipledispatch`不支持一个类型是多个类型的子类型的写法, 比如我想表达`A <: B && A <: C`时就无能为力了.
+  1. `multipledispatch`不支持函数参数的类型签名. `python 3.5`加入了`typing`库, 表示`def foo(bar: int, baz: str) -> list`这种写法是官方提倡的, 然而multipledispatch却不支持这种写法.
+  2. `multipledispatch`不支持一个类型是多个类型的子类型的写法, 比如我想表达`A <: B && A <: C`时就无能为力了.
 
 由于给作者提issue以后作者几个月没动静, 因此在`multipledispatch`的基础上, 笔者修改了一些代码, 发布了multipledispatch2.
 
