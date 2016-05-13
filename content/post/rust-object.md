@@ -6,11 +6,10 @@ author:
   github: https://github.com/doomsplayer
   name: Wu Young
   website: http://wooya.me
-cardbackground: '#3B4D7D'
 categories:
 - post
 - rust
-rags:
+tags:
 - OO
 - generic
 date: 2015-11-04T11:49:25+08:00
