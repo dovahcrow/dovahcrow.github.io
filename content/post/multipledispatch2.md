@@ -9,8 +9,9 @@ categories:
 - post
 - python
 tags:
-- subtype
+- subtyping
 - type system
+- multiple dispatch
 date: 2016-05-13T18:41:28+08:00
 title: multipledispatch2
 ---
@@ -32,7 +33,7 @@ title: multipledispatch2
   1. 增加了对`type annotation`的支持, 即:
      对于原来的
      
-     ```pyhton
+     ```python
      @dispatch(int, str)
      def foo(a, b):
          pass
@@ -59,9 +60,9 @@ title: multipledispatch2
          pass
      ```
      
-     那么`foo(C())`的调用是成立的. 当且仅当入参同时是`A`和`B`的子类, 对foo的调用才会成立.
+     对于调用`foo(x)`, 当且仅当入参`x`同时是`A`和`B`的子类时, 对foo的调用才会成立. 在上例中只有`foo(C())`是成立的.
      
-     这个对于写库的人来说十分方便, 当你想要使用`trait`来`mixin`的时候, `user`可能会拿你的`trait`混合出很多`subtypes`. 如果你想要提供一些函数来操作这些`subtypes`, 使用原有的`multipledispatch`是不可能的.
+     这个新特性对于写库的人来说十分方便, 比如当你想要使用`trait`来做`mixin`的时候, users可能会拿你的`trait`混合出很多`subtypes`. 如果你想要提供一些函数来操作这些`subtypes`, 比如有一个函数当参数`mixin`了`class A`时产生behavior1, `mixin`了`class B`时产生behavior2, 同时`mixin`了`class A`和`class B`时, 产生behavior3. 在这种情况下, 使用原有的`multipledispatch`是不可能的.
      
 ## 技术细节:
   
@@ -81,9 +82,9 @@ title: multipledispatch2
   
   当你传入参数`(C, B)`的时候, 显然希望调用的是2而不是1, 当传入`(D, B)`的时候, 显然也希望调用2而不是1.只有当传入`(A, B)`时, 才希望调用的是1.
   
-  用形象的话来说: 对于入参X, 希望被调用的函数是拥有具体的签名的那个函数.
+  用形象的话来说: 对于入参`X`, 希望被调用的函数是拥有`最具体`的签名的那个函数.
   
-  于是这就要求我们有一个排序方法将foo的所有签名进行排序, 越具体的签名尽可能在前面. 进行签名搜索时, 应该从头开始搜, 并采纳第一个适合的签名.
+  于是这就要求我们有一个排序方法将`foo`的所有签名进行排序, 越具体的签名尽可能在前面. 进行签名搜索时, 应该从头开始搜, 并采纳第一个适合的签名.
   
   还是上面那个例子, 如果我们能够产生一个搜索顺序: `[(C, B), (A, B)]`, 那不就符合要求了?
   
@@ -92,10 +93,12 @@ title: multipledispatch2
   在这里我们定义`compare`如下:
   
   ```
-  A, B 为 tuple of types
+  令 A, B 为 tuple of types
   
   if A.length == b.length then
       A compare B := A <: B (即A是B的子类型)
+  else
+      return not comparable
   ```
   
   而对于`tuple of types`的`<:`定义如下:
@@ -104,38 +107,38 @@ title: multipledispatch2
   for zip(all a in A, all b in B):
     a <: b
   ```
-  即A中每一个类型都是对应位置上B的子类型时, `A<:B`
+  即A中每一个类型都是对应位置上B的子类型时, `A <: B`
   
-  这样我们定义了类型签名之间的`subtyping`关系. 于是我们使用这个`compare`关系对一个函数的所有签名进行排序, 结果将得到若干个`DAG`(有向无环图).
+  这样我们定义了类型签名之间的`subtyping`关系. 于是我们使用这个`compare`关系对一个函数的所有签名进行拓扑排序, 结果将得到一个序列.
   
-  至于为什么是`DAG`而不是序列, 是因为签名之间并不是良序关系. 两个签名之间可能其实是没有任何大小关系的. 如果签名间没有关系(无法比较), 则他们将产生两个连接片.
+  注意这里使用拓扑排序而不是别的排序方法, 是因为签名之间并不是良序关系. 两个签名之间可能其实是没有任何大小关系的(上面的`return not comparable`分支). 因此一个函数的所有签名其实构成了多个`DAG`(有向无环图).
   
-  接下来我们对`DAG`采取拓扑排序, 那么将得到一个搜索序列. 按照这个序列搜索, 一定能够得到最"确切"的那个签名.
+  按照拓扑排序得到的序列搜索, 一定能够得到`最具体`的那个签名.
     
 ### 加入`multiple subtypes`后的变化:
   
-  上面的定义很不错, 但是没有考虑一种情况: 在`tuple of types`的`<:`定义中, 我们使用了`a <: b`这个比较. 然而当`multiple subtypes`存在的时候, 如何求`a <: b`呢?
+  上面的定义很不错, 但是没有考虑一种情况: 在`tuple of types`的`<:`定义中, 我们使用了`a <: b`这个比较. 然而当`multiple subtypes`存在的时候, `a`和`b`可能是一个类型, 也可能是一个联合类型`[type, type ...]`. 那么如何求`a <: b`呢?
   
-  比如,如何证明`C<: [A, B]`当
-  
-  ```
+  比如, 当
+
+  ```python
   class A: pass
   class B: pass
   class C(A, B): pass
   ```
   
-  时呢?
+  时, 如何证明`C <: [A, B]`呢?
   
-  甚至是`[C, D] <: [A, B]`当
+  甚至是当
   
-  ```
+  ```python
   class A: pass
   class B: pass
   class C(A): pass
   class D(B): pass
   ```
   
-  时呢?
+  时, 如何证明`[C, D] <: [A, B]`呢?
   
   我们拓展一下`subtyping`关系即可:
   
@@ -153,4 +156,4 @@ title: multipledispatch2
       return for all types in b if any types in a <: types in b
   ```
   
-  这样一来, 就完美支持`multiple subtypes`啦.
+  经过这样一个补充定义以后, `multipledispatch2`就完美支持`multiple subtypes`啦.
