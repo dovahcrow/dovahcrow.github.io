@@ -21,12 +21,14 @@ title: multipledispatch2
 由于是从静态语言切换成的python使用者, 笔者对python的动态类型非常不适应. 因此几乎每个地方都会使用multipledispatch给保护一下.
 
 然后用久了感觉有几个不方便:
+
     1. `multipledispatch`不支持函数参数的类型签名. `python 3.5`加入了`typing`库, 表示`def foo(bar: int, baz: str) -> list`这种写法是官方提倡的, 然而multipledispatch却不支持这种写法.
     2. `multipledispatch`不支持一个类型是多个类型的子类型的写法, 比如我想表达`A <: B && A <: C`时就无能为力了.
 
 由于给作者提issue以后作者几个月没动静, 因此在`multipledispatch`的基础上, 笔者修改了一些代码, 发布了multipledispatch2.
 
 主要改动是:
+
   1. 增加了对`type annotation`的支持, 即:
      对于原来的
      
@@ -61,7 +63,7 @@ title: multipledispatch2
      
      这个对于写库的人来说十分方便, 当你想要使用`trait`来`mixin`的时候, `user`可能会拿你的`trait`混合出很多`subtypes`. 如果你想要提供一些函数来操作这些`subtypes`, 使用原有的`multipledispatch`是不可能的.
      
-  # 技术细节:
+## 技术细节:
   
   主要问题在于`dispatch order`上. 比如: 对于同一个函数名foo, 它有两种类型:
   
@@ -110,7 +112,7 @@ title: multipledispatch2
   
   接下来我们对`DAG`采取拓扑排序, 那么将得到一个搜索序列. 按照这个序列搜索, 一定能够得到最"确切"的那个签名.
     
-  ## 加入`multiple subtypes`后的变化:
+### 加入`multiple subtypes`后的变化:
   
   上面的定义很不错, 但是没有考虑一种情况: 在`tuple of types`的`<:`定义中, 我们使用了`a <: b`这个比较. 然而当`multiple subtypes`存在的时候, 如何求`a <: b`呢?
   
@@ -136,6 +138,7 @@ title: multipledispatch2
   时呢?
   
   我们拓展一下`subtyping`关系即可:
+  
   ```
   对于types a and b
   
@@ -149,4 +152,5 @@ title: multipledispatch2
     else if a and b both are tuple then
       return for all types in b if any types in a <: types in b
   ```
+  
   这样一来, 就完美支持`multiple subtypes`啦.
