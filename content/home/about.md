@@ -23,7 +23,7 @@ weight = 10
   title = "Education"
 
 [[education.courses]]
-  course = "BSc in Infomation Security"
+  course = "BEng in Infomation Security"
   institution = "University of Electronic Science and Technology of China"
   year = 2012
  
