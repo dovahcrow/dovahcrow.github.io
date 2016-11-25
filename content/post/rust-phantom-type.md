@@ -1,10 +1,4 @@
 ---
-author:
-    name: "wooya"
-    description: "The fortune teller"
-    website: "http://wooya.me"
-    email: "doomsplayer@gmail.com"
-    github: "https://github.com/doomsplayer"
 title: 说说Phantom Type
 description: Lets talk about phantom typen
 date: "2015-11-02T10:36:23+08:00"

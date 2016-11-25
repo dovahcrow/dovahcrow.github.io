@@ -1,23 +1,21 @@
 ---
-author:
-  description: The fortune teller
-  email: doomsplayer@gmail.com
-  github: https://github.com/doomsplayer
-  name: Wu Young
-  website: http://wooya.me
 categories:
-- post
-- python
+  - post
+  - python
 tags:
-- subtyping
-- type system
-- multiple dispatch
+  - subtyping
+  - type system
+  - multiple dispatch
 date: 2016-05-13T18:41:28+08:00
 title: multipledispatch2
+draft: false
+image: 
+math: true
+summary: >
+  The article elaborates some technic details in building a multiple dispatch library in python. 
 ---
 
 本文讲述了笔者的multipledispatch2库的一些技术细节.
-<!--more-->
 
 由于是从静态语言切换成的python使用者, 笔者对python的动态类型非常不适应. 因此几乎每个地方都会使用multipledispatch给保护一下.
 

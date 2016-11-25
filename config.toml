@@ -1,81 +1,120 @@
-BaseURL = "http://wooya.me/"
-LanguageCode = "en-us"
-MetaDataFormat = "yaml"
-HasCJKLanguage = true
+baseurl = "https://example.com"
 Title = "IRIS"
-Theme = "hugo-pacman-theme"
-pygmentsStyle = "default"
-pygmentsUseClasses = true
+copyright = "&copy; 2016 Young"
+languageCode = "en-us"
+theme = "academic"
+enableEmoji = true
+hasCJKLanguage = true
+footnotereturnlinkcontents = "<sup>^</sup>"
 RSSUri = "feed.xml"
 
-[Author]
-  Name = "Wu Young"
+# Enable comments by entering your Disqus shortname
+disqusShortname = "wooyame"
 
-[Params]
-  AuthorHomepage = "http://wooya.me/"
-  BottomIntroduce = "The Fortune Teller"
-  Description = "Something valuable to write down"
-  Subtitle = "Thought is nothing"
-  #Weibo = "coderzh"
-  #WeiboID = 1816308191
-  #Twitter = "coderzh"
-  GitHub = "doomsplayer"
-  #Facebook = "coderzh"
-  LinkIn = "wooya"
-  Imglogo = "images/neural.png"
-  AuthorImg = "images/gopher.jpg"
-  # 日期时间格式
-  DateFormat = "2006-01-02"
-  MonthFormat = "2006-01"
-  FancyBox = true
-
-  # 使用多说评论
-  #[Params.DuoShuo]
-  #  ShortName = "coderzh"
-
-  # 使用 Disqus 评论
-  [Params.Disqus]
-    ShortName = "wooyame"
-
-  # Google 统计
-  [Params.GoogleAnalytics]
-    ID = "UA-64002783-1"
-
-  # 多语言字符串
-  [Params.Strings]
-    Search = "搜索"
-    PageNotFound = "你访问的页面不存在"
-    ShowSideBar = "显示侧边栏"
-    HideSideBar = "隐藏侧边栏"
-    Categories = "分类"
-    Archive = "归档"
-    Tags = "标签"
-    TagCloud = "标签云"
-    Rss = "RSS 订阅"
-    TableOfContents = "文章目录"
-
-[Menu]
-  [[Menu.Main]]
-    Name = "首页"
-    URL = "/"
-    Weight = 1
-  [[Menu.Main]]
-    Name = "关于"
-    URL = "/about"
-    Weight = 2
-
-
-
+# Enable analytics by entering your Google Analytics tracking ID
+googleAnalytics = "UA-64002783-1"
 
 
 [params]
-image = "/images/avatar-192x210.png" #for frontpage profile card
-website = "wooya.me"
-email = "doomsplayer@gmail.com"
-github = "https://github.com/doomsplayer"
-linkedin = "https://cn.linkedin.com/in/wooya"
-copyrightyear = "2015"
-frontpageposts = 5
-disqusShortname = "wooyame"
-googleAnalytics = "UA-64002783-1"
-enableRSS = true
+  name = "Young Wu"
+  role = "Data Scientist at Strikingly"
+  organization = "Strikingly"
+  avatar = "gopher.jpg"
+  email = "doomsplayer@gmail.com"
+  address = "248 Daxue Road, Yangpu District, Shanghai, China"
+  phone = ""
+
+  # Enable Keybase in Contact section by entering your keybase.io username.
+  keybase = ""
+
+  # Date format (refer to Go's date format: http://flippinggodateformat.com )
+  #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
+  date_format = "Mon, Jan 2, 2006"
+
+  # Enable global LaTeX math rendering?
+  #   If false, you can enable it locally on a per page basis.
+  math = true
+
+  # Enable native social sharing buttons?
+  sharing = true
+
+  # Link custom CSS and JS assets
+  #   (relative to /static/css and /static/js respectively)
+  custom_css = []
+  custom_js  = []
+
+
+  # Social/Academic Networking
+  #
+  # Icon pack "fa" includes the following social network icons:
+  #
+  #   twitter, weibo, linkedin, github, facebook, pinterest, google-plus,
+  #   youtube, instagram, soundcloud
+  #
+  #   For email icon, use "fa" icon pack, "envelope" icon, and
+  #   "mailto:your@email.com" as the link.
+  #
+  #   Full list: https://fortawesome.github.io/Font-Awesome/icons/
+  #
+  # Icon pack "ai" includes the following academic network icons:
+  #
+  #   google-scholar, arxiv, orcid, researchgate, mendeley
+  #
+  #   Full list: https://jpswalsh.github.io/academicons/
+
+  [[params.social]]
+    icon = "envelope"
+    icon_pack = "fa"
+    link = "mailto:doomsplayer@gmail.com"
+
+  # [[params.social]]
+  #   icon = "twitter"
+  #   icon_pack = "fa"
+  #   link = "//twitter.com/GeorgeCushen"
+
+  # [[params.social]]
+  #   icon = "google-scholar"
+  #   icon_pack = "ai"
+  #   link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
+
+  [[params.social]]
+    icon = "github"
+    icon_pack = "fa"
+    link = "//github.com/doomsplayer"
+
+
+# Navigation Links
+#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
+#     desired widget in your `content/home/` folder.
+#   The weight parameter defines the order that the links will appear in.
+
+[[menu.main]]
+  name = "Home"
+  url = "#about"
+  weight = 1
+
+# [[menu.main]]
+#   name = "Publications"
+#   url = "#publications_selected"
+#   weight = 2
+
+[[menu.main]]
+  name = "Posts"
+  url = "#posts"
+  weight = 3
+
+[[menu.main]]
+  name = "Projects"
+  url = "#projects"
+  weight = 4
+
+# [[menu.main]]
+#   name = "Teaching"
+#   url = "#teaching"
+#   weight = 5
+
+[[menu.main]]
+  name = "Contact"
+  url = "#contact"
+  weight = 6
+

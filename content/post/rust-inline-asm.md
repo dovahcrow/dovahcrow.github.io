@@ -1,12 +1,4 @@
 ---
-author:
-  description: The fortune teller
-  email: doomsplayer@gmail.com
-  github: https://github.com/doomsplayer
-  image: /images/avatar-64x64.png
-  name: Wu Young
-  website: http://wooya.me
-cardbackground: '#3B4D7D'
 categories:
 - post
 - rust
