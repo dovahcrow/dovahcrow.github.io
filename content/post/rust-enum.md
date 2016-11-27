@@ -7,6 +7,8 @@ tags:
 - memory detail
 date: 2015-11-04T11:51:39+08:00
 title: rust enum
+summary: >
+  We analyzed the memory structure of rust in this article through the perspective of llvm ir.
 ---
 
 本文通过解析`llvm`的`ir`来解析rust `enum`的内存布局。

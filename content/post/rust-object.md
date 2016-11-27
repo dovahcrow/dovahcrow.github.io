@@ -7,6 +7,8 @@ tags:
 - generic
 date: 2015-11-04T11:49:25+08:00
 title: rust object
+summary: >
+  This article simply introduced the mechanism of dynamic dispatch in rust.  
 ---
 
 rust有非常强大的类型系统。今天我们来说说rust的泛型。

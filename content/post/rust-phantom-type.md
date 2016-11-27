@@ -8,6 +8,9 @@ categories:
 tags:
 - phantom type
 - type system
+summary: >
+  Using phantom type when programming can noticeably increase the robustness of the code 
+  by transfering the logic checking into type checking.
 ---
 
 在具有高级类型系统的语言里面，有一种类型标记的用法叫phantom type,

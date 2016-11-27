@@ -6,6 +6,8 @@ tags:
 - compiler
 date: 2015-11-04T11:54:16+08:00
 title: rust compiler plugin
+summary: >
+  We can use compiler plugin in rust compiler pipeline in order to enhance the grammar.
 ---
 
 rust 提供了一个很强大的编译时功能：自定义编译器插件。

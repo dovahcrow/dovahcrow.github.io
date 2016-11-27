@@ -6,6 +6,7 @@ tags:
 - asm
 date: 2015-11-04T11:53:30+08:00
 title: rust inline asm
+summary: A simple introduction about using asm in rust.
 ---
 
 rust和c/c++一样,可以内联汇编.语法和c/c++的内联汇编大致一样.只有几个细节稍有不同.
@@ -14,7 +15,6 @@ rust和c/c++一样,可以内联汇编.语法和c/c++的内联汇编大致一样.
 
 然后在`asm!`宏里面写汇编即可.
 
-<!--more-->
 
 格式是:
 
