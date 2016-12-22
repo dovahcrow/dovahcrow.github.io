@@ -1,7 +1,7 @@
 ---
 math: true
 summary: >
-  By sending your pdf documents to "kindle.book.converter@gmail.com" with the email address of your amazon kindle push service 
+  By sending your pdf documents to `kindle.book.converter@gmail.com` with the email address of your amazon kindle push service 
   as subject, you will receive a cropped version of pdf in your kindle which has a suitable page size for reading.
 categories:
   - post
@@ -9,7 +9,7 @@ tags:
   - kindle
   - public service
 date: "2016-12-22T17:36:19+08:00"
-title: "kindle pdf conversion service"
+title: "kindle pdf optimization service"
 draft: false
 ---
 
