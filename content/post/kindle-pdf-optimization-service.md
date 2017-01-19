@@ -20,7 +20,14 @@ I took two days writing a service and now things goes easy. You can just send yo
 to `kindle.book.converter@gmail.com` with your `amazon kindle push service email address` 
 as subject, then a cropped version of your book will be pushed to your kindle automatically. 
 Notice that the email address you used to send email to `kindle.book.converter@gmail.com` 
-should also have permissions to push books to your kindle directly. 
+should also have permissions to push books to your kindle directly. A caveat is that if your 
+book contains too much pages, the mailer may reject sending the attachment for its huge size, 
+but you can enter a subset of pages (e.g. `1-9,13,209-`) in the email content to shrink the result file size.
+The input format is:
+  * Single Page - e.g. `1`
+  * Some Pages - e.g. `5-9`
+  * Page Since - e.g. `10-`
+And use comma `,` to combine the page selections, e.g. `1,5-9,10-`. There should not be any spaces inside the page selection.
 
 Basically this service will crop your book into a kindle readable format on server 
 and send it pretending it is you sending the book by mocking the email address.
