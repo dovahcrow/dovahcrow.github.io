@@ -36,7 +36,9 @@ And use comma `,` to combine the page selections, e.g. `1,5-9,10-`. There should
 Basically this service will crop your book into a kindle readable format on server 
 and send it pretending it is you sending the book by mocking the email address.
 
-Be carefull, you should not send classified documents to this address!
+Be carefull, you should not send classified documents to this address! Although I will delete them in place on the server, the document will exist in
+gmail trash for several days until google purge the trash bin automatically. And if something goes wrong, I may replay attachments in the trash bin to debug.
+So please DON'T SEND CLASSIFIED or PRIVATE DOCUMENTS to me in order to keep me away from legal issue.
 
 Great thanks to [willus](http://www.willus.com/) who provided 
 [this excellent tool](http://www.willus.com/k2pdfopt/) to produce 
