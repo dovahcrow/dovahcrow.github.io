@@ -136,3 +136,8 @@ googleAnalytics = "UA-64002783-1"
   name = "RSS"
   weight = 100
   url = "/feed.xml"
+  
+[[menu.main]]
+  name = "Sitemap"
+  weight = 101
+  url = "/sitemap.xml"
