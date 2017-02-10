@@ -27,6 +27,10 @@ weight = 10
   institution = "University of Electronic Science and Technology of China"
   year = 2012
  
+[[education.courses]]
+  course = "MSc in Data Modeling/Warehousing and Database Administration"
+  institution = "Simon Fraser University"
+  year = 2017
 +++
 
 # Biography
