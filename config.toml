@@ -7,7 +7,7 @@ enableEmoji = true
 hasCJKLanguage = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 RSSUri = "feed.xml"
-
+metaDataFormat = "yaml"
 # Enable comments by entering your Disqus shortname
 disqusShortname = "wooyame"
 
@@ -22,7 +22,7 @@ googleAnalytics = "UA-64002783-1"
   avatar = "gopher.jpg"
   email = "doomsplayer@gmail.com"
   address = "248 Daxue Road, Yangpu District, Shanghai, China"
-  phone = ""
+  phone = "Secret"
 
   # Enable Keybase in Contact section by entering your keybase.io username.
   keybase = ""
@@ -128,6 +128,11 @@ googleAnalytics = "UA-64002783-1"
 #   weight = 5
 
 [[menu.main]]
+  name = "Talk"
+  url = "#talks"
+  weight = 5
+
+[[menu.main]]
   name = "Contact"
   url = "#contact"
   weight = 6
@@ -141,3 +146,10 @@ googleAnalytics = "UA-64002783-1"
   name = "Sitemap"
   weight = 101
   url = "/sitemap.xml"
+
+
+# Taxonomies.
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  publication_type = "publication_types"
