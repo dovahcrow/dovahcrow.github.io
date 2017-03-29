@@ -1,11 +1,11 @@
 sudo: false
 language: go
 install:
-  - go get -u github.com/spf13/hugo
-  - go install github.com/spf13/hugo
+  - curl -L https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19_Linux-64bit.tar.gz -o hugo.tar.gz
+  - tar xf hugo.tar.gz
 script:
   - echo 'generate contents'
-  - hugo
+  - ./hugo_0.19_linux_amd64/hugo_0.19_linux_amd64
 after_success:
   - ./deploy.py
 env:
