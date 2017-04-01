@@ -1,5 +1,5 @@
 ---
-abstract: "Sharing a real application in Strikingly which using Rust and Elixir to handle both IO bounded and computing bounded task in single app"
+abstract: "A real application in Strikingly which uses Rust and Elixir to handle both IO bounded and computing bounded task in single app"
 categories:
   - talk
 date: 2017-03-25T14:00:00+08:00
