@@ -17,7 +17,7 @@ googleAnalytics = "UA-64002783-1"
 
 [params]
   name = "Young Wu"
-  role = "Data Scientist at Strikingly"
+  role = "Data Scientist"
   organization = "Strikingly"
   avatar = "gopher.jpg"
   email = "doomsplayer@gmail.com"
