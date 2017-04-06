@@ -74,3 +74,5 @@ Nextaction also supports a tag called `@someday`. The logic is:
 when Nextaction meets a task which should be tagged `@nextaction`
 but currently has tag `@someday`, it won't tag `@nextaction` to that task.
 So that your someday tasks won't show up on your nextaction list.
+
+So, don't hesitate to deploy a nextaction server and let's call it a day!
