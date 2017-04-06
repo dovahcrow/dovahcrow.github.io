@@ -5,7 +5,7 @@ date: 2017-04-06T17:41:28+08:00
 draft: false
 image: null
 math: true
-summary: Using nextaction-rs, you can now mimic Omnifocus or MLO's nextactin behavior in todoist!
+summary: Using nextaction-rs, you can now mimic Omnifocus or MLO's nextaction behavior in todoist!
 tags: 
   - todoist
   - gtd
