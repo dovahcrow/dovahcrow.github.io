@@ -25,7 +25,7 @@ a "nextaction as a service", a.k.a. naas).
 ## Simple run
 You should set environment variable `NXTT_token` to your todoist token.
 
-To build the application, (rust)[`rustup.rs`] is needed.
+To build the application, [rust](`rustup.rs`) is needed.
 Run: `git clone && cargo run --release`
 
 ## Docker Image
