@@ -11,7 +11,7 @@ tags:
   - gtd
   - nextaction
   - omnifocus
-title: Implementing nextaction in todoist
+title: Implementing Nextaction In Todoist
 ---
 
 If you are a fan of MLO or Omnifocus, I bet you will really miss the nextaction feature if you migrate to todoist. With nextaction, one can keep really focus on 

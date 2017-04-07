@@ -5,7 +5,7 @@ categories:
 tags:
 - asm
 date: 2015-11-04T11:53:30+08:00
-title: rust inline asm
+title: Rust Inline ASM
 summary: A simple introduction about using asm in rust.
 ---
 

@@ -6,7 +6,7 @@ tags:
 - enum
 - memory detail
 date: 2015-11-04T11:51:39+08:00
-title: rust enum
+title: Rust Enum
 summary: >
   We analyzed the memory structure of rust in this article through the perspective of llvm ir.
 ---

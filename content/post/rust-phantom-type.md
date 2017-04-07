@@ -1,5 +1,5 @@
 ---
-title: 说说Phantom Type
+title: Talk About Phantom Type
 description: Lets talk about phantom typen
 date: "2015-11-02T10:36:23+08:00"
 categories:

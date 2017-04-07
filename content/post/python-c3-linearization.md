@@ -5,7 +5,7 @@ categories:
 tag:
 - linearization
 date: 2016-04-09T17:35:01+08:00
-title: python c3 linearization
+title: Python C3 Linearization
 summary: >
   This article describes the linearization algorithm used in python's `super` function call.
 ---

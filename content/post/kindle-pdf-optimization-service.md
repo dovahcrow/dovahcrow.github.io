@@ -9,7 +9,7 @@ tags:
   - kindle
   - public service
 date: "2016-12-22T17:36:19+08:00"
-title: "kindle pdf optimization service"
+title: "Kindle PDF Optimization Service"
 draft: false
 ---
 

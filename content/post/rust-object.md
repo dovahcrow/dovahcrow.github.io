@@ -6,7 +6,7 @@ tags:
 - OO
 - generic
 date: 2015-11-04T11:49:25+08:00
-title: rust object
+title: Rust Object
 summary: >
   This article simply introduced the mechanism of dynamic dispatch in rust.  
 ---

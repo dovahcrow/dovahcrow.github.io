@@ -7,7 +7,7 @@ tags:
   - type system
   - multiple dispatch
 date: 2016-05-13T18:41:28+08:00
-title: multipledispatch2
+title: Multipledispatch2
 draft: false
 image: 
 math: true

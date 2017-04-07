@@ -5,7 +5,7 @@ categories:
 tags:
 - compiler
 date: 2015-11-04T11:54:16+08:00
-title: rust compiler plugin
+title: Rust Compiler Plugin
 summary: >
   We can use compiler plugin in rust compiler pipeline in order to enhance the grammar.
 ---
