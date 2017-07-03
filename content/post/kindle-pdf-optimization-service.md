@@ -1,8 +1,8 @@
 ---
 math: true
 summary: >
-  By sending your pdf documents to `kindle.book.converter@gmail.com` with the email address of your amazon kindle push service 
-  as subject, you will receive a cropped version of pdf in your kindle which has a suitable page size for reading.
+  By sending your pdf documents to `kindle.book.converter@gmail.com` with the email address of your Amazon Kindle push service 
+  as subject, you will receive a cropped version of pdf in your Kindle which has a suitable page size for reading.
 categories:
   - post
 tags: 
@@ -13,17 +13,16 @@ title: "Kindle PDF Optimization Service"
 draft: false
 ---
 
-I'm fond of reading academic things on my kindle, however, most academic papers are not
-designed to be read on a 6 inch size screen, let alone those with two columns format. 
+I'm fond of reading academic things on my Kindle, however, most academic papers are not
+designed to be read on a 6-inch size screen, let alone those with two columns format. 
 
-I took two days writing a service and now things goes easy. You can just send your pdf 
-to `kindle.book.converter@gmail.com` with your `amazon kindle push service email address` 
-as subject, then a cropped version of your book will be pushed to your kindle automatically. 
+I took two days writing a service and now things go easy. You can just send your pdf 
+to `kindle.book.converter@gmail.com` with your `Amazon Kindle push service email address` 
+as subject, then a cropped version of your book will be pushed to your Kindle automatically. 
 Notice that the email address you used to send email to `kindle.book.converter@gmail.com` 
-should also have permissions to push books to your kindle directly.
+should also have permissions to push books to your Kindle directly.
 
-A caveat is that if your 
-book contains too much pages, the mailer may reject sending the attachment for its huge size, 
+A caveat is that if the book contains too many pages, the mailer may reject sending the attachment for its huge size, 
 but you can enter a subset of pages (e.g. `1-9,13,209-`) in the email content to shrink the result file size.
 The input format is:
 
@@ -33,12 +32,12 @@ The input format is:
   
 And use comma `,` to combine the page selections, e.g. `1,5-9,10-`. There should not be any spaces inside the page selection.
 
-Basically this service will crop your book into a kindle readable format on server 
+Basically, this service will crop your book into a Kindle-readable format on server 
 and send it pretending it is you sending the book by mocking the email address.
 
-Be carefull, you should not send classified documents to this address! Although I will delete them in place on the server, the document will exist in
-gmail trash for several days until google purge the trash bin automatically. And if something goes wrong, I may replay attachments in the trash bin to debug.
-So please DON'T SEND CLASSIFIED or PRIVATE DOCUMENTS to me in order to keep me away from legal issue.
+Be careful, you should not send classified documents to this address! Although I will delete them in place on the server, the document will exist in
+Gmail trash for several days until Google purge the trash bin automatically. And if something goes wrong, I may replay attachments in the trash bin to debug.
+So please DON'T SEND CLASSIFIED or PRIVATE DOCUMENTS to me in order to keep me away from the legal issue.
 
 Great thanks to [willus](http://www.willus.com/) who provided 
 [this excellent tool](http://www.willus.com/k2pdfopt/) to produce 
