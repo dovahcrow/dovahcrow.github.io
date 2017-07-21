@@ -13,9 +13,9 @@ weight = 1
 [interests]
   title = "Interests"
   interests = [
-    "Artificial Intelligence",
-    "Computational Linguistics",
-    "Information Retrieval"
+    "Machine Learning",
+    "Database System",
+    "Integer Optimization"
   ]
 
 # List your qualifications (such as academic degrees).
@@ -35,7 +35,7 @@ weight = 1
 
 # Biography
 
-Young is a data scientist at Strikingly. His research interests include 
-Machine Learning, Natural Language Processing, Probabilistic Graphical Model and Deep Learning. 
+Young is a MSc student at SFU. His research interests include 
+Machine Learning, Optimization, Database System and Data Management.
 
-He leads the Data Team at Strikingly.
+He can be found at SFU Database System Lab.

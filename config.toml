@@ -1,6 +1,6 @@
 baseurl = "http://wooya.me"
 Title = "IRIS"
-copyright = "&copy; 2016 Young"
+copyright = "&copy; 2017 Young"
 languageCode = "en-us"
 theme = "academic"
 enableEmoji = true
@@ -17,12 +17,13 @@ googleAnalytics = "UA-64002783-1"
 
 [params]
   name = "Young Wu"
-  role = "Data Scientist"
-  organization = "Strikingly"
-  avatar = "gopher.jpg"
+  role = "MSc Student"
+  organization = "SFU"
+  avatar = "me.jpg"
   email = "doomsplayer@gmail.com"
-  address = "248 Daxue Road, Yangpu District, Shanghai, China"
-  phone = "Secret"
+  address = "8888 University Drirve, Burnaby, BC, V5A 1S6"
+  telegram = "wooya42"
+  #phone = "Secret"
 
   # Enable Keybase in Contact section by entering your keybase.io username.
   keybase = ""
@@ -70,7 +71,7 @@ googleAnalytics = "UA-64002783-1"
   # [[params.social]]
   #   icon = "google-scholar"
   #   icon_pack = "ai"
-  #   link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
+  #   link = "//scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
 
   [[params.social]]
     icon = "github"
@@ -80,22 +81,12 @@ googleAnalytics = "UA-64002783-1"
   [[params.social]]
     icon = "institution"
     icon_pack = "fa"
-    link = "https://www.sfu.ca"
-
-  [[params.social]]
-    icon = "building"
-    icon_pack = "fa"
-    link = "https://www.strikingly.com"
+    link = "//www.sfu.ca"
 
   [[params.social]]
     icon = "coffee"
     icon_pack = "fa"
-    link = "https:////www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LKM2L7LDMU6ZS"
-
-  [[params.social]]
-    icon = "edit"
-    icon_pack = "fa"
-    link = "https://github.com/doomsplayer/doomsplayer.github.io/tree/source/content/post"
+    link = "//www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LKM2L7LDMU6ZS"
 
 # Navigation Links
 #   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
