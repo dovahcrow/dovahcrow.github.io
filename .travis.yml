@@ -1,15 +1,14 @@
 sudo: false
 language: go
 install:
-  - curl -L https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19_Linux-64bit.tar.gz -o hugo.tar.gz
-  - tar xf hugo.tar.gz
+- curl -L https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19_Linux-64bit.tar.gz -o hugo.tar.gz
+- tar xf hugo.tar.gz
 script:
-  - echo 'generate contents'
-  - ./hugo_0.19_linux_amd64/hugo_0.19_linux_amd64
+- echo 'generate contents'
+- ./hugo_0.19_linux_amd64/hugo_0.19_linux_amd64
 after_success:
-  - ./deploy.py
+- ./deploy.py
 env:
   global:
-    - secure: SBY4OtCaGgjb9wRC+BH1IhmNTfZ6AekP59kplM/Af1dkMkURCRXNmD53hYZAgBkbsy9rDv9VB7PegsPc/5CqoXqVW8c3+cuHZYeXo3P8uxOSGhWeW0CojrBBVDfJanUBmBSZ2ZyVXnR6DZkaNcUEKp9h3E1j2YKjLTVXuwJ7Gg+A8AwuJgjyB0KGk3BCIHVdlL4SvkEuV0TgWMMIfUFyBqH9XtchoeGN+Ff7U1iH/LxikgyVlYhqBXn0tkNfofAwygcA/O3Vohe35o5idTe7YKOhZ14lY/dkaxDCdNGlWzKolZkhFXeDE7m9pFDhSnieJQe2q5opYbL8q2PjBkVbRa45P9Mxcg5UNEqQF6tutP+5Is4ykvaJkAGIkfc4xQXAXtzJpmLCFjXKs4ZWhecoYnekVk7uLmY4L1eQsCTi5Tb8QfUMB/UjUYS0yd1y6IxMSkujF/lsXwmE+xPxhVimqPHETkGN64ttiFOIIn6zbQQou60dpFAGaC+0ONtOJFAZMWlALWwXNtxeNNr4hSo7FrAOpxcY7XdrZmkCxtjoX+x9mcK+q3m6sSZnvj4X5oH6xx8ZgZQ1+lKHZRtdOXxVPwRgjNOpgVMMqOmdtrjaTKvCjIDVurzLpI8nLj8mXzlh0jYcnZENtWmNTpKCMNN5kkfRo523N3Ng5Wq8w8G07hs=
-    - USER_EMAIL=doomsplayer@gmail.com
-    - USER_NAME="Young Wu"
+  - secure: AB11xzA9aluJBHsqVcIPRyKcs56ipA36jEGe+NqODCqrgnwSwPFQWUM7/46hPegzugklJQEHSvWF9R1VLYd10cULGh2mAJS/LZDgbWwXiJzpPtV7PFOzTSKpcW41llQ6qnepkfbdvbVmhTwmRBzAwJBm7x/zCYwNlv5qbdwx+ChTkDOnHFu8NsS7mmUSjX4mCRpv9qweLL9VkUvoTf+yPuoqqXRXJiX11+vtxHzbaANuEf4ncSx7qyZDwz6uAJ3nmCFDvH8uebtyWHR7KeWu7VwOhjSMo10ei/vbe4MV4jA2IjQo/4hXYbrG26JR97m84IhY4UjV+hbZIa8Oorqeh7Y+sNpx4SCpdpuk6cMWCYko4BywQoic9e/m4QsTRjr/Bp5NN0gYLFkNZbkrmwIFdvP0STyb4mmptJ/RZzJecceMi093JtRvIXvKvXstcK8x/n6VgTtvF60f1tJeN9D/SoWwj86C2mVVpHVoQKS09NMXQ9Oycwl+Ait27bNb0Jb3wRbCpQYKnvctMj1XuTxZsp4ww/zbSaKpvlh+7QwueZXZXTKgKd9rv67ZB67iK8HngA1+rYxyZo3kv3E1x5b5uxzKtFRp4q/IdivY7M0TC7M9Hei/kut1BHlIWOt7NTcAptXw3dJ3QGFc8FYkHlDhOcwEKfDl6J8kZpJO4IlniFw=
+  - USER_NAME="Young Wu"
