@@ -13,9 +13,9 @@ weight = 1
 [interests]
   title = "Interests"
   interests = [
-    "Machine Learning",
     "Database System",
-    "Integer Optimization"
+    "Optimization",
+    "Entity Resolution"
   ]
 
 # List your qualifications (such as academic degrees).
