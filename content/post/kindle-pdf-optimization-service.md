@@ -13,6 +13,8 @@ title: "Kindle PDF Optimization Service"
 draft: false
 ---
 
+# What it is?
+
 I'm fond of reading academic things on my Kindle, however, most academic papers are not
 designed to be read on a 6-inch size screen, let alone those with two columns format. 
 
@@ -22,7 +24,12 @@ as subject, then a cropped version of your book will be pushed to your Kindle au
 Notice that the email address you used to send email to `kindle.book.converter@gmail.com` 
 should also have permissions to push books to your Kindle directly.
 
-A caveat is that if the book contains too many pages, the mailer may reject sending the attachment for its huge size, 
+Basically, this service will crop your book into a Kindle-readable format on server 
+and send it pretending it is you sending the book by mocking the email address.
+
+# Page selection if file too large
+
+One thing is that if the book contains too many pages, the mailer may reject sending the attachment for its huge size, 
 but you can enter a subset of pages (e.g. `1-9,13,209-`) in the email content to shrink the result file size.
 The input format is:
 
@@ -30,14 +37,25 @@ The input format is:
   * Some Pages - e.g. `5-9`
   * Page Since - e.g. `10-`
   
-And use comma `,` to combine the page selections, e.g. `1,5-9,10-`. There should not be any spaces inside the page selection.
+And use comma `,` to combine the page selections, e.g. `1,5-9,10-`, with a prepending `# ` to indicate it's a page selection command. There should not be any spaces inside the page selection.
 
-Basically, this service will crop your book into a Kindle-readable format on server 
-and send it pretending it is you sending the book by mocking the email address.
+# Additional params
+
+Currently, this service supports params including page selection and raw k2pdfopt params by writing them in mail body. Only one
+PDF file should be attached if params are used.
+
+Detailed grammar:
+
+* Prepending `#` with a `space` to do page selection, e.g. `# 1,5-9,10-` (from the above example).
+* Prepending `@` with a `space` to do pass raw params to k2pdfopt, e.g. `@ -p 1,5-9,10-` is same as `# 1,5-9,10-` if you know the param `-p` is page selection for `k2pdfopt`, resulting in `k2pdfopt -p 1,5-9,10- -o <filename>_converted.pdf <filename>` be called (if you know how to use `k2pdfopt`, then you will definetely understand this. Otherwise, `# ` is enough for you).
+
+# Caveat
 
 Be careful, you should not send classified documents to this address! Although I will delete them in place on the server, the document will exist in
 Gmail trash for several days until Google purge the trash bin automatically. And if something goes wrong, I may replay attachments in the trash bin to debug.
-So please DON'T SEND CLASSIFIED or PRIVATE DOCUMENTS to me in order to keep me away from the legal issue.
+So please **DON'T SEND CLASSIFIED** or **PRIVATE DOCUMENTS** to me in order to keep me away from legal issues.
+
+# Thanks
 
 Great thanks to [willus](http://www.willus.com/) who provided 
 [this excellent tool](http://www.willus.com/k2pdfopt/) to produce 
