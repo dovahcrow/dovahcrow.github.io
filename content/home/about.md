@@ -13,6 +13,7 @@ weight = 1
 [interests]
   title = "Interests"
   interests = [
+    "Data Management",
     "Database System",
     "Optimization",
     "Entity Resolution"
@@ -35,7 +36,9 @@ weight = 1
 
 # Biography
 
-Young is a MSc student at SFU. His research interests include 
-Machine Learning, Optimization, Database System and Data Management.
+Weiyüen is a MSc student at SFU right now. His research interests include 
+Data Management, Database System, Optimization and Entity Resolution.
 
-He can be found at SFU Database System Lab.
+He took a gap year working in Strikingly @ Shanghai, as a Data Scientist.
+
+He can be found at SFU Database System Lab @ Burnaby.

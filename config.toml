@@ -1,12 +1,12 @@
 baseurl = "http://wooya.me/"
 Title = "IRIS"
-copyright = "&copy; 2017 Young"
+copyright = "&copy; 2017 Weiyüen"
 languageCode = "en-us"
 theme = "academic"
 enableEmoji = true
 hasCJKLanguage = true
 footnotereturnlinkcontents = "<sup>^</sup>"
-RSSUri = "feed.xml"
+
 metaDataFormat = "yaml"
 # Enable comments by entering your Disqus shortname
 disqusShortname = "wooyame"
@@ -14,9 +14,15 @@ disqusShortname = "wooyame"
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = "UA-64002783-1"
 
+preserveTaxonomyNames = true
+paginate = 10
+
+[outputs]
+  home = [ "HTML", "CSS", "RSS" ]
+  section = [ "HTML", "RSS" ]
 
 [params]
-  name = "Young Wu"
+  name = "Weiyüen Wu"
   role = "MSc Student"
   organization = "SFU"
   avatar = "me.png"
@@ -24,6 +30,9 @@ googleAnalytics = "UA-64002783-1"
   address = "8888 University Drirve, Burnaby, BC, V5A 1S6"
   #telegram = "wooya42"
   #phone = "Secret"
+
+  color_theme = "default"
+  font = "playfair"
 
   # Enable Keybase in Contact section by entering your keybase.io username.
   keybase = ""
@@ -43,6 +52,45 @@ googleAnalytics = "UA-64002783-1"
   #   (relative to /static/css and /static/js respectively)
   custom_css = []
   custom_js  = []
+
+  # Show estimated reading time for posts?
+  reading_time = true
+
+  # Display comment count? Requires commenting to be enabled.
+  comment_count = true
+
+  # Display section pager for posts?
+  section_pager = true
+
+  # Highlight.js options
+  #   highlight
+  #     Enable global source code highlighting?  If false, you can
+  #     override it for a particular page in that page's preamble.
+  #
+  #     Example: highlight = true
+  #
+  #   highlight_languages
+  #     Add support for highlighting additional languages. Support for
+  #     languages mentioned here will be included in all pages. You
+  #     can also set this variable for a particular page in that
+  #     page's preamble.
+  #
+  #     Example: highlight_languages = ["go", "lisp", "ocaml"]
+  #
+  #   highlight_style
+  #     Choose a different CSS style for highlighting source
+  #     code. Setting this option in a page's preamble has no
+  #     effect.
+  #
+  #     Example: highlight_style = "github-gist"
+  #
+  #   For the list of supported languages and styles, see:
+  #   https://cdnjs.com/libraries/highlight.js/
+  #
+  #   For more info on the highlighting options, see:
+  #   https://sourcethemes.com/academic/post/writing-markdown-latex/#highlighting-options
+  highlight = true
+  highlight_languages = ["rust", "python"]
 
 
   # Social/Academic Networking
@@ -129,14 +177,20 @@ googleAnalytics = "UA-64002783-1"
   weight = 6
 
 [[menu.main]]
-  name = "RSS"
+  name = "Misc"
   weight = 100
-  url = "/feed.xml"
-  
+  identifier = "misc"
+
 [[menu.main]]
-  name = "Sitemap"
-  weight = 101
-  url = "/sitemap.xml"
+  name = "Netease PAC"
+  weight = 1
+  parent = "misc"
+  url = "/file/netease.pac"
+
+# [[menu.main]]
+#   name = "Sitemap"
+#   weight = 101
+#   url = "/sitemap.xml"
 
 
 # Taxonomies.

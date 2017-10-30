@@ -1,9 +1,9 @@
 ---
 categories:
-- post
-- python
-tag:
-- linearization
+    - post
+    - python
+tags:
+    - linearization
 date: 2016-04-09T17:35:01+08:00
 title: Python C3 Linearization
 summary: >
