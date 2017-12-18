@@ -12,7 +12,11 @@ date: "2016-12-22T17:36:19+08:00"
 title: "Kindle PDF Optimization Service"
 draft: false
 ---
-
+# Update:
+  Due to lack of funding, I decided to move it to another service provider which brings in new constraints to this service:
+  * Total file size for a single email may not be larger than 6 MB. So if you have multiple files to convert, please send them in separate emails 
+  * File should be finished converting within 5 min, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.
+  
 # What it is?
 
 I'm fond of reading academic things on my Kindle, however, most academic papers are not
