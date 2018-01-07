@@ -1,7 +1,7 @@
 ---
 math: true
 summary: >
-  By sending your pdf documents to `kindle.book.converter@gmail.com` with the email address of your Amazon Kindle push service 
+  By sending your pdf documents to `kindle.book.converter@gmail.com` with your Send-To-Kindle address
   as subject, you will receive a cropped version of pdf in your Kindle which has a suitable page size for reading.
 categories:
   - post
@@ -15,22 +15,24 @@ draft: false
 # Update:
   Due to lack of funding, I decided to move it to another service provider which brings in new restrictions to this service:
   
-  * Total file size for a single email may not be larger than 6 MB. So if you have multiple files to convert, please send them in separate emails 
-  * File should be finished converting within 5 min, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.
+  * ~~Total file size for a single email may not be larger than 6 MB. So if you have multiple files to convert, please send them in separate emails~~
+  * Conversion of _Each_ file should be finished within 5 min, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.
   
+  Update, take 2: I integrated a small hack into the service as the first feature in 2018, so there's no restriction on file size anymore.
 # What it is?
 
 I'm fond of reading academic things on my Kindle, however, most academic papers are not
 designed to be read on a 6-inch size screen, let alone those with two columns format. 
 
-I took two days writing a service and now things go easy. You can just send your pdf 
-to `kindle.book.converter@gmail.com` with your `Amazon Kindle push service email address` 
-as subject, then a cropped version of your book will be pushed to your Kindle automatically. 
-Notice that the email address you used to send email to `kindle.book.converter@gmail.com` 
-should also have permissions to push books to your Kindle directly.
+I took some time writing a service and now things go easy. You can just send your pdf 
+to `kindle.book.converter@gmail.com` with your `Send-To-Kindle` address
+as the subject, then a cropped version of your book will be pushed to your Kindle automatically. 
 
-Basically, this service will crop your book into a Kindle-readable format on server 
-and send it pretending it is you sending the book by mocking the email address.
+Basically, this service will crop your book into a Kindle readable format
+and send it pretending it is you sending the book by mocking the sender address.
+
+So, notice that the email used to send PDFs to `kindle.book.converter@gmail.com` 
+should be in your [Approved Personal Document E-mail List](https://www.amazon.com/gp/sendtokindle/email).
 
 # Page selection if file too large
 
