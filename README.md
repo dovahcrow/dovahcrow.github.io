@@ -1,4 +1,4 @@
-## My Blog [![Travis](https://img.shields.io/travis/dovahcrow/dovahcrow.github.io.svg)](https://travis-ci.org/doomsplayer/dovahcrow.github.io)
+## My Blog [![Travis](https://img.shields.io/travis/dovahcrow/dovahcrow.github.io.svg)](https://travis-ci.org/dovahcrow/dovahcrow.github.io)
 
 Build with [Hugo](https://gohugo.io).
 
