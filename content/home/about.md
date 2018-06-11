@@ -37,7 +37,7 @@ weight = 1
 # Biography
 
 Weiyüen is a MSc student at SFU right now. His research interests include 
-Data Management, Database System, Optimization and Entity Resolution.
+Data Management, Database System and Machine Learning Model Diagnosis.
 
 He took a gap year working in Strikingly @ Shanghai, as a Data Scientist.
 
