@@ -1,6 +1,6 @@
 baseurl = "http://wooya.me/"
 Title = "IRIS"
-copyright = "&copy; 2017 Weiyüen"
+copyright = "&copy; 2018 Weiyüen"
 languageCode = "en-us"
 theme = "academic"
 enableEmoji = true
