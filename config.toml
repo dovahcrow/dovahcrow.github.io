@@ -1,4 +1,4 @@
-baseurl = "http://wooya.me/"
+baseurl = "https://dovahcrow.github.io/"
 Title = "IRIS"
 copyright = "&copy; 2018 Weiyüen"
 languageCode = "en-us"
@@ -26,7 +26,7 @@ paginate = 10
   role = "MSc Student"
   organization = "SFU"
   avatar = "gopher.jpg"
-  email = "doomsplayer@gmail.com"
+  email = "youngw@sfu.ca"
   address = "8888 University Drirve, Burnaby, BC, V5A 1S6"
   #telegram = "wooya42"
   #phone = "Secret"
@@ -114,7 +114,7 @@ paginate = 10
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
-    link = "mailto:doomsplayer@gmail.com"
+    link = "mailto:youngw@sfu.ca"
 
   # [[params.social]]
   #   icon = "google-scholar"
@@ -124,7 +124,7 @@ paginate = 10
   [[params.social]]
     icon = "github"
     icon_pack = "fa"
-    link = "//github.com/doomsplayer"
+    link = "//github.com/dovahcrow"
 
   [[params.social]]
     icon = "institution"

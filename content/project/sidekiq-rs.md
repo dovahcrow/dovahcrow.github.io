@@ -2,7 +2,7 @@
 categories:
    - project
 date: 2017-03-29T10:47:19+08:00
-external_link: "http://github.com/doomsplayer/sidekiq-rs.git"
+external_link: "http://github.com/dovahcrow/sidekiq-rs.git"
 math: true
 tags: []
 title: sidekiq-rs
