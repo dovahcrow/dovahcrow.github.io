@@ -14,9 +14,9 @@ weight = 1
   title = "Interests"
   interests = [
     "Data Management",
-    "Database System",
+    "Dats Cleaning",
     "Optimization",
-    "Entity Resolution"
+    "Machine Learning"
   ]
 
 # List your qualifications (such as academic degrees).
@@ -29,15 +29,19 @@ weight = 1
   year = 2012
  
 [[education.courses]]
-  course = "MSc in Data Modeling/Warehousing and Database Administration"
+  course = "MSc in Computing Science"
   institution = "Simon Fraser University"
   year = 2017
+[[education.courses]]
+  course = "PhD in Computing Science"
+  institution = "Simon Fraser University"
+  year = 2019
 +++
 
 # Biography
 
-Weiyüen is a MSc student at SFU right now. His research interests include 
-Data Management, Database System and Machine Learning Model Diagnosis.
+Weiyüen is a PhD student at SFU right now. His research interests include 
+Data Management, Data Cleaning and Machine Learning Model Diagnosis.
 
 He took a gap year working in Strikingly @ Shanghai, as a Data Scientist.
 
