@@ -14,8 +14,8 @@ role: PhD in Computing Science
 
 # Organizations/Affiliations
 organizations:
-- name: Simon Fraser University
-  url: "https://sfu.ca"
+  - name: Simon Fraser University
+    url: "https://sfu.ca"
 
 # Short bio (displayed in user profile at end of posts)
 bio: Phd @ SFU
@@ -24,7 +24,7 @@ interests:
 - Data Management
 - Explanation & Interpretation
 - Optimization
-- Machine Learning
+- Applied Machine Learning
 
 # List your qualifications (such as academic degrees).
 education:
@@ -69,8 +69,8 @@ user_groups: []
 ---
 
 Weiyüen is a PhD student at SFU right now. His research interests include 
-Data Management, Data Cleaning and Machine Learning Model Diagnosis.
+Data Management, ML Debugging and Applying Machine Learning to real problems.
 
 He took a gap year working in Strikingly @ Shanghai, as a Data Scientist.
 
-He can be found at SFU Database System Lab @ Burnaby.
+He can be found at SFU Database System Lab.
