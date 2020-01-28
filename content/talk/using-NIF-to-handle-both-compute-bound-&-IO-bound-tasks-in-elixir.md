@@ -15,7 +15,7 @@ tags:
   - io
 title: Using NIF to handle both compute-bound & IO-bound tasks in elixir
 url_pdf: ""
-url_slides: "http://slides.com/youngwoo/deck-4"
+url_slides: "https://slides.com/dovahcrow/deck-4"
 url_video: ""
 
 # Is this a selected talk? (true/false)
