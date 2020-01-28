@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>public service | IRIS</title><link>http://wooya.me/tags/public-service/</link><atom:link href="http://wooya.me/tags/public-service/index.xml" rel="self" type="application/rss+xml"/><description>public service</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019 Weiyüen</copyright><lastBuildDate>Wed, 29 Mar 2017 11:13:52 +0800</lastBuildDate><image><url>http://wooya.me/img/icon.png</url><title>public service</title><link>http://wooya.me/tags/public-service/</link></image><item><title>k2pdfopt service</title><link>http://wooya.me/project/k2pdfopt-service/</link><pubDate>Wed, 29 Mar 2017 11:13:52 +0800</pubDate><guid>http://wooya.me/project/k2pdfopt-service/</guid><description>&lt;p>It tailors pdf into kindle readable size in a foolproof way,
+&lt;a href="http://wooya.me/post/kindle-pdf-optimization-service/">details&lt;/a>
+.&lt;/p></description></item><item><title>Kindle PDF Optimization Service</title><link>http://wooya.me/post/kindle-pdf-optimization-service/</link><pubDate>Thu, 22 Dec 2016 17:36:19 +0800</pubDate><guid>http://wooya.me/post/kindle-pdf-optimization-service/</guid><description>&lt;h1 id="update">Update:&lt;/h1>
+&lt;p>Due to lack of funding, I decided to move it to another service provider which brings in new restrictions to this service:&lt;/p>
+&lt;ul>
+&lt;li>&lt;del>Total file size for a single email may not be larger than 6 MB. So if you have multiple files to convert, please send them in separate emails&lt;/del>&lt;/li>
+&lt;li>Conversion of &lt;em>Each&lt;/em> file should be finished within 5 min, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.&lt;/li>
+&lt;/ul>
+&lt;p>Update, take 2: I integrated a small hack into the service as the first feature in 2018, so there&amp;rsquo;s no restriction on file size anymore.&lt;/p>
+&lt;h1 id="what-it-is">What it is?&lt;/h1>
+&lt;p>I&amp;rsquo;m fond of reading academic things on my Kindle, however, most academic papers are not
+designed to be read on a 6-inch size screen, let alone those with two columns format.&lt;/p>
+&lt;p>I took some time writing a service and now things go easy. You can just send your pdf
+to &lt;code>kindle.book.converter@gmail.com&lt;/code> with your &lt;code>Send-To-Kindle&lt;/code> address
+as the subject, then a cropped version of your book will be pushed to your Kindle automatically.&lt;/p>
+&lt;p>Basically, this service will crop your book into a Kindle readable format
+and send it pretending it is you sending the book by mocking the sender address.&lt;/p>
+&lt;p>So, notice that the email used to send PDFs to &lt;code>kindle.book.converter@gmail.com&lt;/code>
+should be in your
+&lt;a href="https://www.amazon.com/gp/sendtokindle/email" target="_blank" rel="noopener">Approved Personal Document E-mail List&lt;/a>
+.&lt;/p>
+&lt;h1 id="page-selection-if-file-too-large">Page selection if file too large&lt;/h1>
+&lt;p>One thing is that if the book contains too many pages, the mailer may reject sending the attachment for its huge size,
+but you can enter a subset of pages (e.g. &lt;code>1-9,13,209-&lt;/code>) in the email content to shrink the result file size.
+The input format is:&lt;/p>
+&lt;ul>
+&lt;li>Single Page - e.g. &lt;code>1&lt;/code>&lt;/li>
+&lt;li>Some Pages - e.g. &lt;code>5-9&lt;/code>&lt;/li>
+&lt;li>Page Since - e.g. &lt;code>10-&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>And use comma &lt;code>,&lt;/code> to combine the page selections, e.g. &lt;code>1,5-9,10-&lt;/code>, with a prepending &lt;code># &lt;/code> to indicate it&amp;rsquo;s a page selection command. There should not be any spaces inside the page selection.&lt;/p>
+&lt;h1 id="additional-params">Additional params&lt;/h1>
+&lt;p>Currently, this service supports params including page selection and raw k2pdfopt params by writing them in mail body. Only one
+PDF file should be attached if params are used.&lt;/p>
+&lt;p>Detailed grammar:&lt;/p>
+&lt;ul>
+&lt;li>Prepending &lt;code>#&lt;/code> with a &lt;code>space&lt;/code> to do page selection, e.g. &lt;code># 1,5-9,10-&lt;/code> (from the above example).&lt;/li>
+&lt;li>Prepending &lt;code>@&lt;/code> with a &lt;code>space&lt;/code> to do pass raw params to k2pdfopt, e.g. &lt;code>@ -p 1,5-9,10-&lt;/code> is same as &lt;code># 1,5-9,10-&lt;/code> if you know the param &lt;code>-p&lt;/code> is page selection for &lt;code>k2pdfopt&lt;/code>, resulting in &lt;code>k2pdfopt -p 1,5-9,10- -o &amp;lt;filename&amp;gt;_converted.pdf &amp;lt;filename&amp;gt;&lt;/code> be called (if you know how to use &lt;code>k2pdfopt&lt;/code>, then you will definetely understand this. Otherwise, &lt;code># &lt;/code> is enough for you).&lt;/li>
+&lt;/ul>
+&lt;h1 id="caveat">Caveat&lt;/h1>
+&lt;p>Be careful, you should not send classified documents to this address! Although I will delete them in place on the server, the document will exist in
+Gmail trash for several days until Google purge the trash bin automatically. And if something goes wrong, I may replay attachments in the trash bin to debug.
+So please &lt;strong>DON&amp;rsquo;T SEND CLASSIFIED&lt;/strong> or &lt;strong>PRIVATE DOCUMENTS&lt;/strong> to me in order to keep me away from legal issues.&lt;/p>
+&lt;h1 id="thanks">Thanks&lt;/h1>
+&lt;p>Great thanks to
+&lt;a href="http://www.willus.com/" target="_blank" rel="noopener">willus&lt;/a>
+who provided
+&lt;a href="http://www.willus.com/k2pdfopt/" target="_blank" rel="noopener">this excellent tool&lt;/a>
+to produce
+the kindle readable version of pdf.&lt;/p>
+&lt;center>
+&lt;hr/>
+&lt;p> Do you like the service? &lt;/p>
+&lt;p> It costs me several bucks to maintain the server and email sending service &lt;/p>
+&lt;p> I'm really &lt;strong>appreciate&lt;/strong> it if you can offer me a cup of coffee :)&lt;/p>
+&lt;form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+&lt;input type="hidden" name="cmd" value="_s-xclick" />
+&lt;input type="hidden" name="hosted_button_id" value="LKM2L7LDMU6ZS" />
+&lt;input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="Offer me a coffee with Paypal :)" alt="Offer me a coffee" />
+&lt;img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" style="margin-top: 0; margin-bottom: 0;"/>
+&lt;/form>
+&lt;p style="margin-top: 0; margin-bottom: 0;"> -- OR -- &lt;/p>
+&lt;h3 style="margin-top: 0; margin-bottom: 0;"> Bitcoin &lt;/h3>
+&lt;img ng-src="https://chart.googleapis.com/chart?chs=150x150&amp;amp;cht=qr&amp;amp;chl=1DyAXYcQy4HNWu83vRho1b8b15zqKn9qd6&amp;amp;choe=UTF-8" ng-show="showqr" src="https://chart.googleapis.com/chart?chs=150x150&amp;amp;cht=qr&amp;amp;chl=1DyAXYcQy4HNWu83vRho1b8b15zqKn9qd6&amp;amp;choe=UTF-8" style="margin-top: 0; margin-bottom: 0;">
+&lt;p style="margin-top: 0; margin-bottom: 0;"> 1DyAXYcQy4HNWu83vRho1b8b15zqKn9qd6 &lt;/p>
+&lt;/center></description></item></channel></rss>

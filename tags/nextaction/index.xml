@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>nextaction | IRIS</title><link>http://wooya.me/tags/nextaction/</link><atom:link href="http://wooya.me/tags/nextaction/index.xml" rel="self" type="application/rss+xml"/><description>nextaction</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019 Weiyüen</copyright><lastBuildDate>Thu, 06 Apr 2017 17:41:28 +0800</lastBuildDate><image><url>http://wooya.me/img/icon.png</url><title>nextaction</title><link>http://wooya.me/tags/nextaction/</link></image><item><title>Implementing Nextaction In Todoist</title><link>http://wooya.me/post/todoist-nextaction/</link><pubDate>Thu, 06 Apr 2017 17:41:28 +0800</pubDate><guid>http://wooya.me/post/todoist-nextaction/</guid><description>&lt;p>If you are a fan of MLO or Omnifocus, I bet you will really miss the nextaction feature if you migrate to Todoist. With nextaction, one can keep really focus on things he should do, which is really nice. But since Todoist hasn&amp;rsquo;t provided this feature(maybe they don&amp;rsquo;t want this forever), we need to exploit the todoist api to achieve our goal.&lt;/p>
+&lt;p>Inspired by
+&lt;a href="https://github.com/akramer/NextAction" target="_blank" rel="noopener">here&lt;/a>
+, implementing by a polling server is a trivial but decent way. Rather than using python, I chose to write it in Rust. The rationale behind is that it should be a simple application with as less as possible dependencies, not python with lots of redundant libraries. And you can see after that the compiled docker image is only 18M which is much easier to distribute (Actually I&amp;rsquo;m considering a &amp;ldquo;nextaction as a service&amp;rdquo;, a.k.a. NaaS).&lt;/p>
+&lt;h1 id="usage">Usage&lt;/h1>
+&lt;h2 id="simple-run">Simple run&lt;/h2>
+&lt;p>You should set environment variable &lt;code>NXTT_token&lt;/code> to your Todoist token.&lt;/p>
+&lt;p>To build the application,
+&lt;a href="%60https;//rustup.rs%60">rust&lt;/a>
+is needed.
+Run: &lt;code>git clone &amp;amp;&amp;amp; cargo run --release&lt;/code>&lt;/p>
+&lt;h2 id="docker-image">Docker Image&lt;/h2>
+&lt;p>A docker image is also available. Run it by &lt;code>docker run -it -e NXTT_token=&amp;lt;your Todoist token&amp;gt; wooya/nextaction&lt;/code>&lt;/p>
+&lt;h1 id="introduction">Introduction&lt;/h1>
+&lt;blockquote>
+&lt;p>copy-pasted from the README&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="nextaction">@nextaction&lt;/h2>
+&lt;p>Nextaction will auto tag current &lt;code>nextaction&lt;/code> task with &lt;code>@nextaction&lt;/code>. It also supports parallel task (with &amp;lsquo;-&amp;rsquo; append)
+and sequential task (with &amp;lsquo;:&amp;rsquo; append).&lt;/p>
+&lt;p>e.g.&lt;/p>
+&lt;pre>&lt;code>|-taskA:
+|-taskB // This task will be tagged @nextaction
+|-taskC:
+|-taskD
+&lt;/code>&lt;/pre>
+&lt;p>after you complete taskB, it will become&lt;/p>
+&lt;pre>&lt;code>|-taskA:
+|-taskC:
+|-taskD // This task will be tagged @nextaction
+&lt;/code>&lt;/pre>
+&lt;p>And for parallel tasks:&lt;/p>
+&lt;pre>&lt;code>|-taskA-
+|-taskB // This task will be tagged @nextaction
+|-taskC // This task will also be tagged @nextaction
+&lt;/code>&lt;/pre>
+&lt;p>So that you can add a filter on @nextaction to make you focused.&lt;/p>
+&lt;p>Parallel tasks and sequential tasks can corporate with each other seamlessly:&lt;/p>
+&lt;pre>&lt;code>|-taskA-
+|-taskB:
+| |-taskC // This task will be tagged @nextaction
+| |-taskD
+|-taskE // This task will be tagged @nextaction
+&lt;/code>&lt;/pre>
+&lt;h2 id="someday">@someday&lt;/h2>
+&lt;p>Nextaction also supports a tag called &lt;code>@someday&lt;/code>. The logic is:
+when Nextaction meets a task which should be tagged &lt;code>@nextaction&lt;/code>
+but currently has tag &lt;code>@someday&lt;/code>, it won&amp;rsquo;t tag &lt;code>@nextaction&lt;/code> to that task.
+So that your someday tasks won&amp;rsquo;t show up on your nextaction list.&lt;/p>
+&lt;p>So, don&amp;rsquo;t hesitate to deploy a nextaction server and let&amp;rsquo;s call it a day!&lt;/p></description></item></channel></rss>
