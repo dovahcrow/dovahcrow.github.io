@@ -22,7 +22,7 @@ bio: Phd @ SFU
 
 interests:
 - Data Management
-- Explanation & Interpretation
+- ML Debugging
 - Optimization
 - Applied Machine Learning
 
@@ -69,7 +69,7 @@ user_groups: []
 ---
 
 Weiyüen is a PhD student at SFU right now. His research interests include 
-Data Management, ML Debugging and Applying Machine Learning to real problems.
+Data Management, ML Debugging and applying Machine Learning to real problems.
 
 He took a gap year working in Strikingly @ Shanghai, as a Data Scientist.
 
