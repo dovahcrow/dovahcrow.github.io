@@ -41,7 +41,7 @@ featured: false
 # links:
 # - name: ""
 #   url: ""
-url_pdf: "/file/MLSys_2020.pdf"
+url_pdf: "files/MLSys_2020.pdf"
 # url_code: ''
 # url_dataset: ''
 # url_poster: ''
