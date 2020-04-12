@@ -68,7 +68,7 @@ email: "youngw@sfu.com"
 user_groups: []
 ---
 
-Weiyüen is a PhD student at SFU right now. His research interests include 
+Weiyuan is a PhD student at SFU right now. His research interests include 
 Data Management, ML Debugging and applying Machine Learning to real problems.
 
 He took a gap year working in Strikingly @ Shanghai, as a Data Scientist.
