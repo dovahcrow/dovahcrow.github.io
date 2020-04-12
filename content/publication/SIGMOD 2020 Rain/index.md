@@ -16,25 +16,24 @@ publishDate: "2020-04-01"
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
 # 3 = Preprint / Working Paper; 4 = Report; 5 = Book; 6 = Book section;
 # 7 = Thesis; 8 = Patent
-publication_types: ["3"]
+publication_types: ["1"]
 
 # Publication name and optional abbreviated publication name.
 publication: "SIGMOD 2020"
 publication_short: "SIGMOD 2020"
 
 abstract: >
-  As the need for machine learning (ML) increases rapidlyacross all industry sectors, 
-  there is a significant interestamong commercial database providers to support “Query2.0”, 
-  which integrates model inference into SQL queries. 
-  Debugging Query 2.0 is very challenging since an unexpectedquery result may be caused by the bugs in training data (e.g.,wrong labels, corrupted features).
+  As the need for machine learning (ML) increases rapidly across all industry sectors,
+  there is a significant interest among commercial database providers to support "Query 2.0",
+  which integrates model inference into SQL queries.
+  Debugging Query 2.0 is very challenging since an unexpected query result may be caused by the bugs in training data (e.g., wrong labels, corrupted features).
   In response, we propose Rain, a complaint-driven training data debugging system.
-  Rain allows users to specify complaints over the query’sintermediate or final output, 
-  and aims to return a minimumset of training examples so that if they were removed, the complaints would be resolved. 
-  To the best of our knowledge, we are the first to study this problem. 
-  A naive solution re-quires retraining an exponential number of ML models. 
-  Wepropose two novel heuristic approaches based on influencefunctions which both require linear retraining steps. 
-  We provide an in-depth analytical and empirical analysis of the twoapproaches and conduct extensive experiments to evaluatetheir effectiveness using four real-world datasets. 
-  Resultsshow thatRainachieves the highest recall@k among all thebaselines while still returns results interactively
+  Rain allows users to specify complaints over the query's intermediate or final output,
+  and aims to return a minimum set of training examples so that if they were removed, the complaints would be resolved.
+  To the best of our knowledge, we are the first to study this problem. A naive solution requires retraining an exponential number of ML models.
+  We propose two novel heuristic approaches based on influence functions which both require linear retraining steps.
+  We provide an in-depth analytical and empirical analysis of the two approaches and conduct extensive experiments to evaluate their effectiveness using four real-world datasets.
+  Results show that Rain achieves the highest recall@k among all the baselines while still returns results interactively.  
 
 # Summary. An optional shortened abstract.
 summary: ""
