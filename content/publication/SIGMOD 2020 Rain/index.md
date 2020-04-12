@@ -43,9 +43,11 @@ tags:
 - Explanation
 featured: false
 
-links:
-- name: arXiv Version
-  url: files/Rain-arXiv.pdf
+url_pdf: files/Rain-arXiv.pdf
+
+# links:
+# - name: arXiv Version
+#   url: files/Rain-arXiv.pdf
 # url_pdf: http://arxiv.org/pdf/1512.04133v1
 # url_code: '#'
 # url_dataset: '#'
