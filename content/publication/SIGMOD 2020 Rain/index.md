@@ -44,9 +44,9 @@ featured: false
 
 url_pdf: files/Rain-arXiv.pdf
 
-# links:
-# - name: arXiv Version
-#   url: files/Rain-arXiv.pdf
+links:
+  - name: arXiv
+    url: https://arxiv.org/abs/2004.05722
 # url_pdf: http://arxiv.org/pdf/1512.04133v1
 # url_code: '#'
 # url_dataset: '#'
