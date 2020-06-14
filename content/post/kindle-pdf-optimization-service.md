@@ -1,7 +1,7 @@
 ---
 math: true
 summary: >
-  By sending your pdf documents to `kindle.book.converter@gmail.com` with your Send-To-Kindle address
+  By sending your pdf documents to `kindle-deliver@wooya.me` with your Send-To-Kindle address
   as subject, you will receive a cropped version of pdf in your Kindle which has a suitable page size for reading.
 categories:
   - post
@@ -25,13 +25,13 @@ I'm fond of reading academic things on my Kindle, however, most academic papers 
 designed to be read on a 6-inch size screen, let alone those with two columns format. 
 
 I took some time writing a service and now things go easy. You can just send your pdf 
-to `kindle.book.converter@gmail.com` with your `Send-To-Kindle` address
+to `kindle-deliver@wooya.me` with your `Send-To-Kindle` address
 as the subject, then a cropped version of your book will be pushed to your Kindle automatically. 
 
 Basically, this service will crop your book into a Kindle readable format
 and send it pretending it is you sending the book by mocking the sender address.
 
-So, notice that the email used to send PDFs to `kindle.book.converter@gmail.com` 
+So, notice that the email used to send PDFs to `kindle-deliver@wooya.me` 
 should be in your [Approved Personal Document E-mail List](https://www.amazon.com/gp/sendtokindle/email).
 
 # Page selection if file too large
