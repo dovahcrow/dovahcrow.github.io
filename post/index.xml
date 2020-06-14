@@ -58,11 +58,11 @@ So that your someday tasks won&amp;rsquo;t show up on your nextaction list.&lt;/
 &lt;p>I&amp;rsquo;m fond of reading academic things on my Kindle, however, most academic papers are not
 designed to be read on a 6-inch size screen, let alone those with two columns format.&lt;/p>
 &lt;p>I took some time writing a service and now things go easy. You can just send your pdf
-to &lt;code>kindle.book.converter@gmail.com&lt;/code> with your &lt;code>Send-To-Kindle&lt;/code> address
+to &lt;code>kindle-deliver@wooya.me&lt;/code> with your &lt;code>Send-To-Kindle&lt;/code> address
 as the subject, then a cropped version of your book will be pushed to your Kindle automatically.&lt;/p>
 &lt;p>Basically, this service will crop your book into a Kindle readable format
 and send it pretending it is you sending the book by mocking the sender address.&lt;/p>
-&lt;p>So, notice that the email used to send PDFs to &lt;code>kindle.book.converter@gmail.com&lt;/code>
+&lt;p>So, notice that the email used to send PDFs to &lt;code>kindle-deliver@wooya.me&lt;/code>
 should be in your
 &lt;a href="https://www.amazon.com/gp/sendtokindle/email" target="_blank" rel="noopener">Approved Personal Document E-mail List&lt;/a>
 .&lt;/p>
