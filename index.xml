@@ -53,9 +53,10 @@ So that your someday tasks won&amp;rsquo;t show up on your nextaction list.&lt;/
 &lt;p>Due to lack of funding, I decided to move it to another service provider which brings in new restrictions to this service:&lt;/p>
 &lt;ul>
 &lt;li>&lt;del>Total file size for a single email may not be larger than 6 MB. So if you have multiple files to convert, please send them in separate emails&lt;/del>&lt;/li>
-&lt;li>Conversion of &lt;em>Each&lt;/em> file should be finished within 5 min, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.&lt;/li>
+&lt;li>Conversion of &lt;em>Each&lt;/em> file should be finished within &amp;ndash;5&amp;ndash; 15 mins, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.&lt;/li>
 &lt;/ul>
-&lt;p>Update, take 2: I integrated a small hack into the service as the first feature in 2018, so there&amp;rsquo;s no restriction on file size anymore.&lt;/p>
+&lt;p>Update, take 2: I integrated a small hack into the service as the first feature in 2018, so there&amp;rsquo;s no restriction on file size anymore.
+Update, take 3: I increased the time budget for each conversion to 15 mins and 1G memory.&lt;/p>
 &lt;h1 id="what-it-is">What it is?&lt;/h1>
 &lt;p>I&amp;rsquo;m fond of reading academic things on my Kindle, however, most academic papers are not
 designed to be read on a 6-inch size screen, let alone those with two columns format.&lt;/p>
