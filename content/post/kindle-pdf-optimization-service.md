@@ -16,9 +16,11 @@ draft: false
   Due to lack of funding, I decided to move it to another service provider which brings in new restrictions to this service:
   
   * ~~Total file size for a single email may not be larger than 6 MB. So if you have multiple files to convert, please send them in separate emails~~
-  * Conversion of _Each_ file should be finished within 5 min, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.
+  * Conversion of _Each_ file should be finished within --5-- 15 mins, which means your file cannot have many pages. So if you want to convert a whole book, please cut them into small batches. In principle, this service suits most for paper reading.
   
   Update, take 2: I integrated a small hack into the service as the first feature in 2018, so there's no restriction on file size anymore.
+  Update, take 3: I increased the time budget for each conversion to 15 mins and 1G memory.
+
 # What it is?
 
 I'm fond of reading academic things on my Kindle, however, most academic papers are not
