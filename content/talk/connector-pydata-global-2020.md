@@ -1,5 +1,9 @@
 ---
-abstract: "Connector is one of the components of the DataPrep project that helps you doing web data collection using several lines of code."
+abstract: >
+  Data scientists often need to get data from different websites (e.g. Yelp, Twitter, Spotify) via their Web APIs. 
+  In this talk, we will present DataPrep.connector, a unified API wrapper in Python. It enables data scientists
+  to get data from different websites using the same programming interface, 
+  significantly simplifying web data collection. This talk will be of interest to all data scientists."
 categories:
   - talk
 date: 2020-11-13T00:00:00+08:00
