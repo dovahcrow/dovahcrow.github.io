@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rust | Ya!</title><link>http://wooya.me/categories/rust/</link><atom:link href="http://wooya.me/categories/rust/index.xml" rel="self" type="application/rss+xml"/><description>rust</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Wed, 04 Nov 2015 11:54:16 +0800</lastBuildDate><image><url>http://wooya.me/media/icon.png</url><title>rust</title><link>http://wooya.me/categories/rust/</link></image><item><title>Rust Compiler Plugin</title><link>http://wooya.me/post/rust-compiler-plugin/</link><pubDate>Wed, 04 Nov 2015 11:54:16 +0800</pubDate><guid>http://wooya.me/post/rust-compiler-plugin/</guid><description>&lt;p>rust 提供了一个很强大的编译时功能：自定义编译器插件。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rust | Ya!</title><link>https://wooya.me/categories/rust/</link><atom:link href="https://wooya.me/categories/rust/index.xml" rel="self" type="application/rss+xml"/><description>rust</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Wed, 04 Nov 2015 11:54:16 +0800</lastBuildDate><image><url>https://wooya.me/media/icon.png</url><title>rust</title><link>https://wooya.me/categories/rust/</link></image><item><title>Rust Compiler Plugin</title><link>https://wooya.me/post/rust-compiler-plugin/</link><pubDate>Wed, 04 Nov 2015 11:54:16 +0800</pubDate><guid>https://wooya.me/post/rust-compiler-plugin/</guid><description>&lt;p>rust 提供了一个很强大的编译时功能：自定义编译器插件。&lt;/p>
 &lt;p>通过向编译器register一个函数作为入口，它可以在lint时期把ast作为register的那个函数的一个参数来invoke。也就是说，通过编译器插件，我们可以做很多强（wei）大（suo）的事情。&lt;/p>
 &lt;ul>
 &lt;li>例子1：&lt;a href="https://github.com/brson/rust-chamber" target="_blank" rel="noopener">rust-chamber&lt;/a>&lt;/li>
@@ -91,7 +91,7 @@ ctx.lint(mylint, &amp;quot;deliberate fail!&amp;quot;)
 }
 }
 &lt;/code>&lt;/pre>
-&lt;p>于是除非你在main函数打标记#[allow(mylint)]否则编译就是通不过啦啦啦&lt;/p></description></item><item><title>Rust Inline ASM</title><link>http://wooya.me/post/rust-inline-asm/</link><pubDate>Wed, 04 Nov 2015 11:53:30 +0800</pubDate><guid>http://wooya.me/post/rust-inline-asm/</guid><description>&lt;p>rust和c/c++一样,可以内联汇编.语法和c/c++的内联汇编大致一样.只有几个细节稍有不同.&lt;/p>
+&lt;p>于是除非你在main函数打标记#[allow(mylint)]否则编译就是通不过啦啦啦&lt;/p></description></item><item><title>Rust Inline ASM</title><link>https://wooya.me/post/rust-inline-asm/</link><pubDate>Wed, 04 Nov 2015 11:53:30 +0800</pubDate><guid>https://wooya.me/post/rust-inline-asm/</guid><description>&lt;p>rust和c/c++一样,可以内联汇编.语法和c/c++的内联汇编大致一样.只有几个细节稍有不同.&lt;/p>
 &lt;p>首先,需要开启一个特性 &lt;code>#![feature(asm)]&lt;/code>&lt;/p>
 &lt;p>然后在&lt;code>asm!&lt;/code>宏里面写汇编即可.&lt;/p>
 &lt;p>格式是:&lt;/p>
@@ -137,7 +137,7 @@ mov %rax, $0;
 println!(&amp;quot;在第{}号位上的元素是{}&amp;quot;, offset, ret);
 }
 }
-&lt;/code>&lt;/pre></description></item><item><title>Rust Enum</title><link>http://wooya.me/post/rust-enum/</link><pubDate>Wed, 04 Nov 2015 11:51:39 +0800</pubDate><guid>http://wooya.me/post/rust-enum/</guid><description>&lt;p>本文通过解析&lt;code>llvm&lt;/code>的&lt;code>ir&lt;/code>来解析rust &lt;code>enum&lt;/code>的内存布局。&lt;/p>
+&lt;/code>&lt;/pre></description></item><item><title>Rust Enum</title><link>https://wooya.me/post/rust-enum/</link><pubDate>Wed, 04 Nov 2015 11:51:39 +0800</pubDate><guid>https://wooya.me/post/rust-enum/</guid><description>&lt;p>本文通过解析&lt;code>llvm&lt;/code>的&lt;code>ir&lt;/code>来解析rust &lt;code>enum&lt;/code>的内存布局。&lt;/p>
 &lt;p>rust的enum差不多是C的&lt;code>enum&lt;/code>和&lt;code>union&lt;/code>类型的混合体。可以写成&lt;/p>
 &lt;pre>&lt;code class="language-rust">enum Enum {
 AEnum = 0,
@@ -250,7 +250,7 @@ a(int),
 b,c
 }
 &lt;/code>&lt;/pre>
-&lt;p>这儿的区别在于，头部的标号和内存对齐，全部从i8变成了i32，即C的int。&lt;code>{i32, [1 x i32], i64}&lt;/code>&lt;/p></description></item><item><title>Rust Object</title><link>http://wooya.me/post/rust-object/</link><pubDate>Wed, 04 Nov 2015 11:49:25 +0800</pubDate><guid>http://wooya.me/post/rust-object/</guid><description>&lt;p>rust有非常强大的类型系统。今天我们来说说rust的泛型。&lt;/p>
+&lt;p>这儿的区别在于，头部的标号和内存对齐，全部从i8变成了i32，即C的int。&lt;code>{i32, [1 x i32], i64}&lt;/code>&lt;/p></description></item><item><title>Rust Object</title><link>https://wooya.me/post/rust-object/</link><pubDate>Wed, 04 Nov 2015 11:49:25 +0800</pubDate><guid>https://wooya.me/post/rust-object/</guid><description>&lt;p>rust有非常强大的类型系统。今天我们来说说rust的泛型。&lt;/p>
 &lt;p>rust有两种泛型：&lt;/p>
 &lt;ol>
 &lt;li>
@@ -326,7 +326,7 @@ Self类型的方法的trait才叫safe的trait，只有safe的trait才能被用�
 trait XXXXEXT。因为XXXX是safe的object，而trait
 XXXXEXT里面包含了带有返回Self的方法。如果把两者合并为同一个trait，意味着trait XXXX将不能再用于trait
 object。因此必须用两个trait来吧unsafe的方法隔离开。比如常用的Iterator
-trait就是如此。它从以前的一个trait变成了如今的interator和iteratorExt.&lt;/p></description></item><item><title>Talk About Phantom Type</title><link>http://wooya.me/post/rust-phantom-type/</link><pubDate>Mon, 02 Nov 2015 10:36:23 +0800</pubDate><guid>http://wooya.me/post/rust-phantom-type/</guid><description>&lt;p>在具有高级类型系统的语言里面，有一种类型标记的用法叫phantom type,
+trait就是如此。它从以前的一个trait变成了如今的interator和iteratorExt.&lt;/p></description></item><item><title>Talk About Phantom Type</title><link>https://wooya.me/post/rust-phantom-type/</link><pubDate>Mon, 02 Nov 2015 10:36:23 +0800</pubDate><guid>https://wooya.me/post/rust-phantom-type/</guid><description>&lt;p>在具有高级类型系统的语言里面，有一种类型标记的用法叫phantom type,
 比如&lt;a href="http://www.haskell.org/haskellwiki/Phantom_type" target="_blank" rel="noopener">Haskell语言&lt;/a>。这种用法有个很有意思用途：用来做编译时的类型检查，并且对于编译后的代码来说，完全没有任何的副作用。&lt;/p>
 &lt;p>举个例子，在做几何运算的时候，我们会碰到运算时变量单位的问题。&lt;/p>
 &lt;pre>&lt;code class="language-rust">#[deriving(Show)]
