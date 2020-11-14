@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: PhD in Computing Science
+role: PhD Student in Computing Science
 
 # Organizations/Affiliations
 organizations:
@@ -18,7 +18,7 @@ organizations:
     url: "https://sfu.ca"
 
 # Short bio (displayed in user profile at end of posts)
-bio: Phd @ SFU
+bio: PhD Student @ SFU
 
 interests:
 - Data Management
@@ -29,7 +29,7 @@ interests:
 # List your qualifications (such as academic degrees).
 education:
   courses:
-  - course: PhD in Computing Science
+  - course: PhD Student in Computing Science
     institution: Simon Fraser University
     year: 2019
   - course: "MSc in Computing Science"
