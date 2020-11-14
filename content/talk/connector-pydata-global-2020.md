@@ -12,7 +12,7 @@ time_end: 2020-11-13T00:00:00+08:00
 event: "PyData Global 2020"
 event_url: "https://global.pydata.org/talks/340"
 highlight: true
-location: "Zoom"
+location: "Online"
 tags: 
   - dataprep
   - pydata

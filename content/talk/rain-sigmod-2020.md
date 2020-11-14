@@ -21,7 +21,7 @@ time_end: 2020-06-17T00:00:00+08:00
 event: "SIGMOD 2020"
 event_url: "https://sigmod2020.org/"
 highlight: true
-location: "Zoom"
+location: "Portland, OR, USA"
 tags: 
   - rain
   - machine learning debugging
