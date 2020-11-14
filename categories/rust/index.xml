@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rust | Ya!</title><link>http://wooya.me/categories/rust/</link><atom:link href="http://wooya.me/categories/rust/index.xml" rel="self" type="application/rss+xml"/><description>rust</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Wed, 04 Nov 2015 11:54:16 +0800</lastBuildDate><image><url>http://wooya.me/img/icon.png</url><title>rust</title><link>http://wooya.me/categories/rust/</link></image><item><title>Rust Compiler Plugin</title><link>http://wooya.me/post/rust-compiler-plugin/</link><pubDate>Wed, 04 Nov 2015 11:54:16 +0800</pubDate><guid>http://wooya.me/post/rust-compiler-plugin/</guid><description>&lt;p>rust 提供了一个很强大的编译时功能：自定义编译器插件。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rust | Ya!</title><link>http://wooya.me/categories/rust/</link><atom:link href="http://wooya.me/categories/rust/index.xml" rel="self" type="application/rss+xml"/><description>rust</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Wed, 04 Nov 2015 11:54:16 +0800</lastBuildDate><image><url>http://wooya.me/media/icon.png</url><title>rust</title><link>http://wooya.me/categories/rust/</link></image><item><title>Rust Compiler Plugin</title><link>http://wooya.me/post/rust-compiler-plugin/</link><pubDate>Wed, 04 Nov 2015 11:54:16 +0800</pubDate><guid>http://wooya.me/post/rust-compiler-plugin/</guid><description>&lt;p>rust 提供了一个很强大的编译时功能：自定义编译器插件。&lt;/p>
 &lt;p>通过向编译器register一个函数作为入口，它可以在lint时期把ast作为register的那个函数的一个参数来invoke。也就是说，通过编译器插件，我们可以做很多强（wei）大（suo）的事情。&lt;/p>
 &lt;ul>
-&lt;li>例子1：
-&lt;a href="https://github.com/brson/rust-chamber" target="_blank" rel="noopener">rust-chamber&lt;/a>
-&lt;/li>
+&lt;li>例子1：&lt;a href="https://github.com/brson/rust-chamber" target="_blank" rel="noopener">rust-chamber&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>chamber是一个语言级别的sandbox(其实是一个rustc的包装)，可以防止你的语言中出现不安全的code。目前它的功能很简单，一旦发现你的code里面有使用了unsafe，或者开启了编译器feature(#![feature()]),
 或者使用了不安全的crate（比如intrinsic）编译就会通不过。怎么实现的呢？其实很简单。下面贴上核心代码：&lt;/p>
@@ -21,15 +19,11 @@ _ =&amp;gt; ()
 &lt;p>context是用来控制编译器行为的。e是传入的expression的ast表现形式。check_expr的作用就是对每个传入的expression进行判断，如果是unsafe
 block，就报错。&lt;/p>
 &lt;ul>
-&lt;li>例子2：
-&lt;a href="https://github.com/huonw/spellck" target="_blank" rel="noopener">spellck&lt;/a>
-&lt;/li>
+&lt;li>例子2：&lt;a href="https://github.com/huonw/spellck" target="_blank" rel="noopener">spellck&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>这是一个基于字典的拼写检查插件。通过字典，可以将代码中的单词拼写错误在编译器进行提示。麻麻再也不用担心我在代码里面打错别字啦！&lt;/p>
 &lt;ul>
-&lt;li>例子3：
-&lt;a href="http://static.rust-lang.org/doc/master/regex/index.html" target="_blank" rel="noopener">regex&lt;/a>
-&lt;/li>
+&lt;li>例子3：&lt;a href="http://static.rust-lang.org/doc/master/regex/index.html" target="_blank" rel="noopener">regex&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;p>重量级插件：rust官方正则表达式库。什么？正则表达式和插件有什么关系？
 这里说的是rust的regex！宏。众所周知，正则表达式需要进行编译。比如python的re.compile，go的regexp.Compile等等。正则表达式需要在运行时，将一个正则表达式字符串编译成正则表达式虚拟机上的指令。所以正则表达式其实是一个内嵌在语言内部的虚拟机语言。
@@ -113,7 +107,7 @@ ctx.lint(mylint, &amp;quot;deliberate fail!&amp;quot;)
 在填充模版的时候,变量用$0,$1来表示,而不是c的%1,%2来表示.
 立即数用&lt;code>$$&lt;/code>表示,&lt;code>$$1&lt;/code>就是1.
 寄存器直接用%来表示,%eax表示eax寄存器
-模版里面多条指令用分号(;)来分割,而不是c的&amp;rdquo;\r\n&amp;rdquo;
+模版里面多条指令用分号(;)来分割,而不是c的&amp;rdquo;\r\n&amp;quot;
 声明clobber的时候直接写&lt;code>eax&lt;/code>,不用像C那样写&lt;code>%eax&lt;/code>
 记得&lt;code>asm!&lt;/code>的时候要外面套&lt;code>unsafe&lt;/code>块
 intel语法我没有试过.所以无从比较语法区别:(&lt;/p>
@@ -333,9 +327,7 @@ trait XXXXEXT。因为XXXX是safe的object，而trait
 XXXXEXT里面包含了带有返回Self的方法。如果把两者合并为同一个trait，意味着trait XXXX将不能再用于trait
 object。因此必须用两个trait来吧unsafe的方法隔离开。比如常用的Iterator
 trait就是如此。它从以前的一个trait变成了如今的interator和iteratorExt.&lt;/p></description></item><item><title>Talk About Phantom Type</title><link>http://wooya.me/post/rust-phantom-type/</link><pubDate>Mon, 02 Nov 2015 10:36:23 +0800</pubDate><guid>http://wooya.me/post/rust-phantom-type/</guid><description>&lt;p>在具有高级类型系统的语言里面，有一种类型标记的用法叫phantom type,
-比如
-&lt;a href="http://www.haskell.org/haskellwiki/Phantom_type" target="_blank" rel="noopener">Haskell语言&lt;/a>
-。这种用法有个很有意思用途：用来做编译时的类型检查，并且对于编译后的代码来说，完全没有任何的副作用。&lt;/p>
+比如&lt;a href="http://www.haskell.org/haskellwiki/Phantom_type" target="_blank" rel="noopener">Haskell语言&lt;/a>。这种用法有个很有意思用途：用来做编译时的类型检查，并且对于编译后的代码来说，完全没有任何的副作用。&lt;/p>
 &lt;p>举个例子，在做几何运算的时候，我们会碰到运算时变量单位的问题。&lt;/p>
 &lt;pre>&lt;code class="language-rust">#[deriving(Show)]
 struct Length&amp;lt;Num&amp;gt;(Num);

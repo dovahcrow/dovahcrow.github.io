@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>linearization | Ya!</title><link>http://wooya.me/tags/linearization/</link><atom:link href="http://wooya.me/tags/linearization/index.xml" rel="self" type="application/rss+xml"/><description>linearization</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Sat, 09 Apr 2016 17:35:01 +0800</lastBuildDate><image><url>http://wooya.me/img/icon.png</url><title>linearization</title><link>http://wooya.me/tags/linearization/</link></image><item><title>Python C3 Linearization</title><link>http://wooya.me/post/python-c3-linearization/</link><pubDate>Sat, 09 Apr 2016 17:35:01 +0800</pubDate><guid>http://wooya.me/post/python-c3-linearization/</guid><description>&lt;p>本文讲解了python的方法搜索优先级, &lt;code>super&lt;/code>函数的调用以及python的线性化算法&lt;code>C3&lt;/code>.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>linearization | Ya!</title><link>http://wooya.me/tags/linearization/</link><atom:link href="http://wooya.me/tags/linearization/index.xml" rel="self" type="application/rss+xml"/><description>linearization</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Sat, 09 Apr 2016 17:35:01 +0800</lastBuildDate><image><url>http://wooya.me/media/icon.png</url><title>linearization</title><link>http://wooya.me/tags/linearization/</link></image><item><title>Python C3 Linearization</title><link>http://wooya.me/post/python-c3-linearization/</link><pubDate>Sat, 09 Apr 2016 17:35:01 +0800</pubDate><guid>http://wooya.me/post/python-c3-linearization/</guid><description>&lt;p>本文讲解了python的方法搜索优先级, &lt;code>super&lt;/code>函数的调用以及python的线性化算法&lt;code>C3&lt;/code>.&lt;/p>
 &lt;p>昨天在搞python多继承的时候遇到一个问题抽象化如下:&lt;/p>
 &lt;pre>&lt;code class="language-python">class A:
 def foo(self):
@@ -28,9 +28,7 @@ A
 &lt;p>&lt;code>linearization&lt;/code>一般出现在具有多继承的语言中, 比如scala, python等.
 因为多继承必然会带来方法冲突等问题从而导致方法搜索失败, 所以必须规定一个方法搜索顺序防止冲突, 线性的从最底部叶
 子类开始向上搜索方法直到找到或失败. 这就要求把一棵继承树变化成一个一维的线性结构.&lt;/p>
-&lt;p>在python中线性化的算法是一种叫做&lt;code>C3&lt;/code>的算法. 来自论文
-&lt;a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.3910" target="_blank" rel="noopener">A Monotonic Superclass Linearization for Dylan&lt;/a>
-.&lt;/p>
+&lt;p>在python中线性化的算法是一种叫做&lt;code>C3&lt;/code>的算法. 来自论文&lt;a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.3910" target="_blank" rel="noopener">A Monotonic Superclass Linearization for Dylan&lt;/a>.&lt;/p>
 &lt;p>它的描述如下(来自wikipedia):&lt;/p>
 &lt;blockquote>
 &lt;p>对于以下的类型:&lt;/p>

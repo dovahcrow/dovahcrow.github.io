@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kindle | Ya!</title><link>http://wooya.me/tags/kindle/</link><atom:link href="http://wooya.me/tags/kindle/index.xml" rel="self" type="application/rss+xml"/><description>kindle</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Thu, 22 Dec 2016 17:36:19 +0800</lastBuildDate><image><url>http://wooya.me/img/icon.png</url><title>kindle</title><link>http://wooya.me/tags/kindle/</link></image><item><title>Kindle PDF Optimization Service</title><link>http://wooya.me/post/kindle-pdf-optimization-service/</link><pubDate>Thu, 22 Dec 2016 17:36:19 +0800</pubDate><guid>http://wooya.me/post/kindle-pdf-optimization-service/</guid><description>&lt;h1 id="update">Update:&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kindle | Ya!</title><link>http://wooya.me/tags/kindle/</link><atom:link href="http://wooya.me/tags/kindle/index.xml" rel="self" type="application/rss+xml"/><description>kindle</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2020 Weiyuan</copyright><lastBuildDate>Thu, 22 Dec 2016 17:36:19 +0800</lastBuildDate><image><url>http://wooya.me/media/icon.png</url><title>kindle</title><link>http://wooya.me/tags/kindle/</link></image><item><title>Kindle PDF Optimization Service</title><link>http://wooya.me/post/kindle-pdf-optimization-service/</link><pubDate>Thu, 22 Dec 2016 17:36:19 +0800</pubDate><guid>http://wooya.me/post/kindle-pdf-optimization-service/</guid><description>&lt;h1 id="update">Update:&lt;/h1>
 &lt;p>Due to lack of funding, I decided to move it to another service provider which brings in new restrictions to this service:&lt;/p>
 &lt;ul>
 &lt;li>&lt;del>Total file size for a single email may not be larger than 6 MB. So if you have multiple files to convert, please send them in separate emails&lt;/del>&lt;/li>
@@ -15,9 +15,7 @@ as the subject, then a cropped version of your book will be pushed to your Kindl
 &lt;p>Basically, this service will crop your book into a Kindle readable format
 and send it pretending it is you sending the book by mocking the sender address.&lt;/p>
 &lt;p>So, notice that the email used to send PDFs to &lt;code>kindle-deliver@wooya.me&lt;/code>
-should be in your
-&lt;a href="https://www.amazon.com/gp/sendtokindle/email" target="_blank" rel="noopener">Approved Personal Document E-mail List&lt;/a>
-.&lt;/p>
+should be in your &lt;a href="https://www.amazon.com/gp/sendtokindle/email" target="_blank" rel="noopener">Approved Personal Document E-mail List&lt;/a>.&lt;/p>
 &lt;h1 id="page-selection-if-file-too-large">Page selection if file too large&lt;/h1>
 &lt;p>One thing is that if the book contains too many pages, the mailer may reject sending the attachment for its huge size,
 but you can enter a subset of pages (e.g. &lt;code>1-9,13,209-&lt;/code>) in the email content to shrink the result file size.
@@ -41,11 +39,8 @@ PDF file should be attached if params are used.&lt;/p>
 Gmail trash for several days until Google purge the trash bin automatically. And if something goes wrong, I may replay attachments in the trash bin to debug.
 So please &lt;strong>DON&amp;rsquo;T SEND CLASSIFIED&lt;/strong> or &lt;strong>PRIVATE DOCUMENTS&lt;/strong> to me in order to keep me away from legal issues.&lt;/p>
 &lt;h1 id="thanks">Thanks&lt;/h1>
-&lt;p>Great thanks to
-&lt;a href="http://www.willus.com/" target="_blank" rel="noopener">willus&lt;/a>
-who provided
-&lt;a href="http://www.willus.com/k2pdfopt/" target="_blank" rel="noopener">this excellent tool&lt;/a>
-to produce
+&lt;p>Great thanks to &lt;a href="http://www.willus.com/" target="_blank" rel="noopener">willus&lt;/a> who provided
+&lt;a href="http://www.willus.com/k2pdfopt/" target="_blank" rel="noopener">this excellent tool&lt;/a> to produce
 the kindle readable version of pdf.&lt;/p>
 &lt;center>
 &lt;hr/>
