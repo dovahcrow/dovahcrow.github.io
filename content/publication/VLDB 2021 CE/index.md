@@ -30,7 +30,8 @@ abstract: >
 summary: ""
 
 tags:
-- Explanation
+  - Cardinality Estimation
+
 featured: false
 
 url_pdf: files/CE.pdf
