@@ -35,7 +35,8 @@ abstract: >
 summary: ""
 
 tags:
-- Explanation
+- Data Cleaning
+- Data Debugging
 featured: false
 
 # links:

@@ -1,5 +1,5 @@
 ---
-title: "Are We Ready For Learned Cardinality Estimation? (Under Review)"
+title: "Are We Ready For Learned Cardinality Estimation?"
 authors:
   - Xiaoying Wang
   - Changbo Qu
@@ -7,11 +7,11 @@ authors:
   - Jiannan Wang
   - Qingqing Zhou
 
-date: "2020-12-01"
+date: "2021-04-15"
 doi: ""
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2020-12-01"
+publishDate: "2021-04-15"
 
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
