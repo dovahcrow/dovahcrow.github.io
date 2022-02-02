@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>generic | Ya!</title><link>https://wooya.me/tag/generic/</link><atom:link href="https://wooya.me/tag/generic/index.xml" rel="self" type="application/rss+xml"/><description>generic</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2022 Weiyuan</copyright><lastBuildDate>Wed, 04 Nov 2015 11:49:25 +0800</lastBuildDate><image><url>https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url><title>generic</title><link>https://wooya.me/tag/generic/</link></image><item><title>Rust Object</title><link>https://wooya.me/post/rust-object/</link><pubDate>Wed, 04 Nov 2015 11:49:25 +0800</pubDate><guid>https://wooya.me/post/rust-object/</guid><description>&lt;p>rust有非常强大的类型系统。今天我们来说说rust的泛型。&lt;/p>
+&lt;p>rust有两种泛型：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>基于&lt;code>static dispatch&lt;/code>的泛型，类似于C++的模板。在编译期进行代码特化（monomorphization），为每一种类型生成一份代码。好处是执行效率高，但是会带来额外的冗余代码，使二进制文件变大（bloat）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>基于&lt;code>dynamic dispatch&lt;/code>的泛型，类似于java和go的&lt;code>interface&lt;/code>。在运行期查找虚表（vtable）来选择执行的方法。好处是使用灵活，但是性能肯定比static dispatch来的差。本篇着重介绍这一种泛型。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr/>
+&lt;ul>
+&lt;li>Trait Object&lt;/li>
+&lt;/ul>
+&lt;p>rust的&lt;code>dynamic dispatch&lt;/code>实现都是基于一种叫做&lt;code>trait object&lt;/code>的类型来实现的。先看一个例子：&lt;/p>
+&lt;pre>&lt;code class="language-rust"> trait Object {
+fn dood(&amp;amp;self) -&amp;gt; int {
+1i
+}
+}
+impl Object for int {}
+impl Object for uint {}
+fn main() {
+fn gimme_an_object(i: &amp;amp;Object) {
+println!(&amp;quot;{}&amp;quot;, i.dood());
+}
+gimme_an_object(&amp;amp;2i); // OUTPUT: 1
+gimme_an_object(&amp;amp;3u); // OUTPUT: 1
+}
+&lt;/code>&lt;/pre>
+&lt;p>&lt;code>gimme_an_object&lt;/code>函数这里发生了什么？
+可以看到，&lt;code>gimme_an_object&lt;/code>需要传入一个&amp;amp;Object类型的参数。就是说，&lt;code>gimme_an_object&lt;/code>函数的参数i是一个实现了Object这个trait的引用类型。所以我们无论喂给它了一个&amp;amp;int或一个&amp;amp;uint，它都能完成调用。因为之前的两个&lt;code>impl&lt;/code>已经为&lt;code>uint&lt;/code>类型和&lt;code>int&lt;/code>类型实现了&lt;code>Object&lt;/code>这个&lt;code>trait&lt;/code>。
+在这一点上，rust的trait和go的interface很相似。我们只需要传入一个接口，函数就能完成工作，为不用管传入的参数到底是什么类型。
+但是这里有一个细节需要注意：为什么要写&lt;code>&amp;amp;Object&lt;/code>，写成&lt;code>fn gimme_an_object(i: Object)&lt;/code>不行吗？
+答案是不行。有人可能很奇怪，为什么我在go里面直接写interface就没问起，rust里面却必须要加个引用呢？
+原因有两个：&lt;/p>
+&lt;ol>
+&lt;li>&lt;/li>
+&lt;li>rust有三种原生指针，&amp;amp;、Box和*。无论哪一种都可以作为trait
+object的indirection，因此要是用interface一统江湖，不再写&amp;amp;，必然导致灵活性下降。无论用哪一种作为trait&lt;br>
+object的默认指针都有失偏颇。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>trait object的编译器魔法。&lt;/li>
+&lt;/ul>
+&lt;p>在rust里，所有的指针都是一个字长。比如64位机器上，&amp;amp;1i的大小就是64个bit。
+但是在trait object中，rust编译器会隐式的把指针转换为一个胖指针。&lt;/p>
+&lt;pre>&lt;code class="language-rust"> // in core::raw::TraitObject
+struct TraitObject {
+data: *mut (),
+vtable: *mut (),
+}
+&lt;/code>&lt;/pre>
+&lt;p>也就是说，所有的TraitObject大小其实都是两个字长。第一个指向数据，第二个指向虚函数表。这点和go的interface其实是一模一样的。&lt;/p>
+&lt;ul>
+&lt;li>trait safety&lt;/li>
+&lt;/ul>
+&lt;p>对于trait object，rust还有一个限制：只有safe的trait才能被用作trait object。
+什么叫safe的trait呢？
+因为有些trait会返回一个self类型，比如：&lt;/p>
+&lt;pre>&lt;code class="language-rust"> trait RetSelf {
+fn ret_self(&amp;amp;self) -&amp;gt; Self;
+}
+&lt;/code>&lt;/pre>
+&lt;p>如果impl给了int，那么ret_self方法的返回值就是一个int，要是impl给了f64，那么返回值就是一个f64.这就意味着代码诸如：&lt;/p>
+&lt;pre>&lt;code class="language-rust"> fn unsafe_object(i: &amp;amp;RetSelf) {
+let c = i.ret_self();
+}
+&lt;/code>&lt;/pre>
+&lt;p>是无法编译的，因为无从知道c的大小。因此在rust里面，只有不带有fn() -&amp;gt;
+Self类型的方法的trait才叫safe的trait，只有safe的trait才能被用作trait object。这也是为什么rust有很多trait xxxx，
+trait XXXXEXT。因为XXXX是safe的object，而trait
+XXXXEXT里面包含了带有返回Self的方法。如果把两者合并为同一个trait，意味着trait XXXX将不能再用于trait
+object。因此必须用两个trait来吧unsafe的方法隔离开。比如常用的Iterator
+trait就是如此。它从以前的一个trait变成了如今的interator和iteratorExt.&lt;/p></description></item></channel></rss>

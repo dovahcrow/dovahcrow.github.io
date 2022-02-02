@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>subtyping | Ya!</title><link>https://wooya.me/tag/subtyping/</link><atom:link href="https://wooya.me/tag/subtyping/index.xml" rel="self" type="application/rss+xml"/><description>subtyping</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2022 Weiyuan</copyright><lastBuildDate>Fri, 13 May 2016 18:41:28 +0800</lastBuildDate><image><url>https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url><title>subtyping</title><link>https://wooya.me/tag/subtyping/</link></image><item><title>Multipledispatch2</title><link>https://wooya.me/post/multipledispatch2/</link><pubDate>Fri, 13 May 2016 18:41:28 +0800</pubDate><guid>https://wooya.me/post/multipledispatch2/</guid><description>&lt;p>本文讲述了笔者的multipledispatch2库的一些技术细节.&lt;/p>
+&lt;p>由于是从静态语言切换成的python使用者, 笔者对python的动态类型非常不适应. 因此几乎每个地方都会使用multipledispatch给保护一下.&lt;/p>
+&lt;p>然后用久了感觉有几个不方便:&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>multipledispatch&lt;/code>不支持函数参数的类型签名. &lt;code>python 3.5&lt;/code>加入了&lt;code>typing&lt;/code>库, 表示&lt;code>def foo(bar: int, baz: str) -&amp;gt; list&lt;/code>这种写法是官方提倡的, 然而multipledispatch却不支持这种写法.&lt;/li>
+&lt;li>&lt;code>multipledispatch&lt;/code>不支持一个类型是多个类型的子类型的写法, 比如我想表达&lt;code>A &amp;lt;: B &amp;amp;&amp;amp; A &amp;lt;: C&lt;/code>时就无能为力了.&lt;/li>
+&lt;/ol>
+&lt;p>由于给作者提issue以后作者几个月没动静, 因此在&lt;code>multipledispatch&lt;/code>的基础上, 笔者修改了一些代码, 发布了multipledispatch2.&lt;/p>
+&lt;p>主要改动是:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>增加了对&lt;code>type annotation&lt;/code>的支持, 即:
+对于原来的&lt;/p>
+&lt;pre>&lt;code class="language-python">@dispatch(int, str)
+def foo(a, b):
+pass
+&lt;/code>&lt;/pre>
+&lt;p>现在可以写作:&lt;/p>
+&lt;pre>&lt;code class="language-python">@dispatch
+def foo(a: int, b: str):
+pass
+&lt;/code>&lt;/pre>
+&lt;p>相对更自然了一点.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>增加了对&lt;code>subtype of multiple types&lt;/code>的支持:&lt;/p>
+&lt;pre>&lt;code class="language-python">class A: pass
+class B: pass
+class C(A, B): pass
+@dispatch
+def foo(a: [A, B]):
+pass
+&lt;/code>&lt;/pre>
+&lt;p>对于调用&lt;code>foo(x)&lt;/code>, 当且仅当入参&lt;code>x&lt;/code>同时是&lt;code>A&lt;/code>和&lt;code>B&lt;/code>的子类时, 对foo的调用才会成立. 在上例中只有&lt;code>foo(C())&lt;/code>是成立的.&lt;/p>
+&lt;p>这个新特性对于写库的人来说十分方便, 比如当你想要使用&lt;code>trait&lt;/code>来做&lt;code>mixin&lt;/code>的时候, users可能会拿你的&lt;code>trait&lt;/code>混合出很多&lt;code>subtypes&lt;/code>. 如果你想要提供一些函数来操作这些&lt;code>subtypes&lt;/code>, 比如有一个函数当参数&lt;code>mixin&lt;/code>了&lt;code>class A&lt;/code>时产生behavior1, &lt;code>mixin&lt;/code>了&lt;code>class B&lt;/code>时产生behavior2, 同时&lt;code>mixin&lt;/code>了&lt;code>class A&lt;/code>和&lt;code>class B&lt;/code>时, 产生behavior3. 在这种情况下, 使用原有的&lt;code>multipledispatch&lt;/code>是不可能的.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="技术细节">技术细节:&lt;/h2>
+&lt;p>主要问题在于&lt;code>dispatch order&lt;/code>上. 比如: 对于同一个函数名foo, 它有两种类型:&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>foo(a: A, b: B): pass&lt;/code>&lt;/li>
+&lt;li>&lt;code>foo(a: C, b: B): pass&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>其中:&lt;/p>
+&lt;pre>&lt;code class="language-python">class A: pass
+class B: pass
+class C(A): pass
+class D(C): pass
+&lt;/code>&lt;/pre>
+&lt;p>当你传入参数&lt;code>(C, B)&lt;/code>的时候, 显然希望调用的是2而不是1, 当传入&lt;code>(D, B)&lt;/code>的时候, 显然也希望调用2而不是1.只有当传入&lt;code>(A, B)&lt;/code>时, 才希望调用的是1.&lt;/p>
+&lt;p>用形象的话来说: 对于入参&lt;code>X&lt;/code>, 希望被调用的函数是拥有&lt;code>最具体&lt;/code>的签名的那个函数.&lt;/p>
+&lt;p>于是这就要求我们有一个排序方法将&lt;code>foo&lt;/code>的所有签名进行排序, 越具体的签名尽可能在前面. 进行签名搜索时, 应该从头开始搜, 并采纳第一个适合的签名.&lt;/p>
+&lt;p>还是上面那个例子, 如果我们能够产生一个搜索顺序: &lt;code>[(C, B), (A, B)]&lt;/code>, 那不就符合要求了?&lt;/p>
+&lt;p>对于排序, 显然需要一个操作符&lt;code>compare&lt;/code>进行比较. 那么对于签名的&lt;code>compare&lt;/code>该如何定义呢? 即如何确定签名与签名之间谁大谁小.&lt;/p>
+&lt;p>在这里我们定义&lt;code>compare&lt;/code>如下:&lt;/p>
+&lt;pre>&lt;code>令 A, B 为 tuple of types
+if A.length == b.length then
+A compare B := A &amp;lt;: B (即A是B的子类型)
+else
+return not comparable
+&lt;/code>&lt;/pre>
+&lt;p>而对于&lt;code>tuple of types&lt;/code>的&lt;code>&amp;lt;:&lt;/code>定义如下:&lt;/p>
+&lt;pre>&lt;code>for zip(all a in A, all b in B):
+a &amp;lt;: b
+&lt;/code>&lt;/pre>
+&lt;p>即A中每一个类型都是对应位置上B的子类型时, &lt;code>A &amp;lt;: B&lt;/code>&lt;/p>
+&lt;p>这样我们定义了类型签名之间的&lt;code>subtyping&lt;/code>关系. 于是我们使用这个&lt;code>compare&lt;/code>关系对一个函数的所有签名进行拓扑排序, 结果将得到一个序列.&lt;/p>
+&lt;p>注意这里使用拓扑排序而不是别的排序方法, 是因为签名之间并不是良序关系. 两个签名之间可能其实是没有任何大小关系的(上面的&lt;code>return not comparable&lt;/code>分支). 因此一个函数的所有签名其实构成了多个&lt;code>DAG&lt;/code>(有向无环图).&lt;/p>
+&lt;p>按照拓扑排序得到的序列搜索, 一定能够得到&lt;code>最具体&lt;/code>的那个签名.&lt;/p>
+&lt;h3 id="加入multiple-subtypes后的变化">加入&lt;code>multiple subtypes&lt;/code>后的变化:&lt;/h3>
+&lt;p>上面的定义很不错, 但是没有考虑一种情况: 在&lt;code>tuple of types&lt;/code>的&lt;code>&amp;lt;:&lt;/code>定义中, 我们使用了&lt;code>a &amp;lt;: b&lt;/code>这个比较. 然而当&lt;code>multiple subtypes&lt;/code>存在的时候, &lt;code>a&lt;/code>和&lt;code>b&lt;/code>可能是一个类型, 也可能是一个联合类型&lt;code>[type, type ...]&lt;/code>. 那么如何求&lt;code>a &amp;lt;: b&lt;/code>呢?&lt;/p>
+&lt;p>比如, 当&lt;/p>
+&lt;pre>&lt;code class="language-python">class A: pass
+class B: pass
+class C(A, B): pass
+&lt;/code>&lt;/pre>
+&lt;p>时, 如何证明&lt;code>C &amp;lt;: [A, B]&lt;/code>呢?&lt;/p>
+&lt;p>甚至是当&lt;/p>
+&lt;pre>&lt;code class="language-python">class A: pass
+class B: pass
+class C(A): pass
+class D(B): pass
+&lt;/code>&lt;/pre>
+&lt;p>时, 如何证明&lt;code>[C, D] &amp;lt;: [A, B]&lt;/code>呢?&lt;/p>
+&lt;p>我们拓展一下&lt;code>subtyping&lt;/code>关系即可:&lt;/p>
+&lt;pre>&lt;code>对于types a and b
+def a &amp;lt;: b as
+if a and b both are type then
+return a &amp;lt;: b
+else if a is type and b is tuple then
+return if a &amp;lt;: all types in b
+else if a is tuple and b is type then
+return if any types in a &amp;lt;: b
+else if a and b both are tuple then
+return for all types in b if any types in a &amp;lt;: types in b
+&lt;/code>&lt;/pre>
+&lt;p>经过这样一个补充定义以后, &lt;code>multipledispatch2&lt;/code>就完美支持&lt;code>multiple subtypes&lt;/code>啦.&lt;/p></description></item></channel></rss>

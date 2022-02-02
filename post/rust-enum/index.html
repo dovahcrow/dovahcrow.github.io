@@ -1,91 +1,384 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Wowchemy 5.0.0-beta.0 for Hugo"><meta name=description content="We analyzed the memory structure of rust in this article through the perspective of llvm ir."><link rel=alternate hreflang=en-us href=https://wooya.me/post/rust-enum/><link rel=preconnect href=https://fonts.gstatic.com crossorigin><meta name=theme-color content="#2962ff"><script src=/js/mathjax-config.js></script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css crossorigin=anonymous title=hl-light><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin=anonymous async></script><script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js integrity crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"><link rel=stylesheet href=/css/wowchemy.css><script async src="https://www.googletagmanager.com/gtag/js?id=UA-64002783-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-function trackOutboundLink(url,target){gtag('event','click',{'event_category':'outbound','event_label':url,'transport_type':'beacon','event_callback':function(){if(target!=='_blank'){document.location=url;}}});console.debug("Outbound link clicked: "+url);}
-function onClickCallback(event){if((event.target.tagName!=='A')||(event.target.host===window.location.host)){return;}
-trackOutboundLink(event.target,event.target.getAttribute('target'));}
-gtag('js',new Date());gtag('config','UA-64002783-1',{});document.addEventListener('click',onClickCallback,false);</script><link rel=manifest href=/index.webmanifest><link rel=icon type=image/png href=/images/icon_hu54ee143ef1e070b207dc27cd44346347_16508_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=/images/icon_hu54ee143ef1e070b207dc27cd44346347_16508_192x192_fill_lanczos_center_2.png><link rel=canonical href=https://wooya.me/post/rust-enum/><meta property="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Ya!"><meta property="og:url" content="https://wooya.me/post/rust-enum/"><meta property="og:title" content="Rust Enum | Ya!"><meta property="og:description" content="We analyzed the memory structure of rust in this article through the perspective of llvm ir."><meta property="og:image" content="https://wooya.me/media/icon.png"><meta property="twitter:image" content="https://wooya.me/media/icon.png"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2015-11-04T11:51:39+08:00"><meta property="article:modified_time" content="2017-04-07T14:43:20+08:00"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://wooya.me/post/rust-enum/"},"headline":"Rust Enum","datePublished":"2015-11-04T11:51:39+08:00","dateModified":"2017-04-07T14:43:20+08:00","publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://wooya.me/images/icon_hu54ee143ef1e070b207dc27cd44346347_16508_192x192_fill_lanczos_center_2.png"}},"description":"We analyzed the memory structure of rust in this article through the perspective of llvm ir.\n"}</script><title>Rust Enum | Ya!</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper><script>window.wcDarkLightEnabled=true;</script><script>const isSiteThemeDark=false;</script><script src=/js/load-theme.js></script><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><div class=page-header><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=/>Ya!</a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=/>Ya!</a></div><div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class=nav-item><a class=nav-link href=/#about><span>Home</span></a></li><li class=nav-item><a class=nav-link href=/#publications><span>Publications</span></a></li><li class=nav-item><a class=nav-link href=/#posts><span>Posts</span></a></li><li class=nav-item><a class=nav-link href=/#projects><span>Projects</span></a></li><li class=nav-item><a class=nav-link href=/#talks><span>Talk</span></a></li><li class=nav-item><a class=nav-link href=/files/CV.pdf><span>CV</span></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li><li class="nav-item dropdown theme-dropdown"><a href=# class=nav-link data-toggle=dropdown aria-haspopup=true><i class="fas fa-moon" aria-hidden=true></i></a><div class=dropdown-menu><a href=# class="dropdown-item js-set-theme-light"><span>Light</span></a>
-<a href=# class="dropdown-item js-set-theme-dark"><span>Dark</span></a>
-<a href=# class="dropdown-item js-set-theme-auto"><span>Automatic</span></a></div></li></ul></div></nav></div><div class=page-body><article class=article><div class="article-container pt-3"><h1>Rust Enum</h1><div class=article-metadata><span class=article-date>Last updated on
-Apr 7, 2017</span>
-<span class=middot-divider></span><span class=article-reading-time>3 min read</span>
-<span class=middot-divider></span><a href=/post/rust-enum/#disqus_thread></a><span class=middot-divider></span><span class=article-categories><i class="fas fa-folder mr-1"></i><a href=/categories/post/>post</a>, <a href=/categories/rust/>rust</a></span></div></div><div class=article-container><div class=article-style><p>本文通过解析<code>llvm</code>的<code>ir</code>来解析rust <code>enum</code>的内存布局。</p><p>rust的enum差不多是C的<code>enum</code>和<code>union</code>类型的混合体。可以写成</p><pre><code class=language-rust>enum Enum {
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Wowchemy 5.4.0 for Hugo">
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media=print onload="this.media='all'">
+<meta name=description content="We analyzed the memory structure of rust in this article through the perspective of llvm ir.
+">
+<link rel=alternate hreflang=en-us href=https://wooya.me/post/rust-enum/>
+<meta name=theme-color content="#1565c0">
+<link rel=stylesheet href=/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin=anonymous media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
+<link rel=stylesheet href=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
+<link rel=stylesheet href=/css/wowchemy.246129d782c938a644fe2d653d8a976f.css>
+<link rel=manifest href=/manifest.webmanifest>
+<link rel=icon type=image/png href=/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://wooya.me/post/rust-enum/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Ya!">
+<meta property="og:url" content="https://wooya.me/post/rust-enum/">
+<meta property="og:title" content="Rust Enum | Ya!">
+<meta property="og:description" content="We analyzed the memory structure of rust in this article through the perspective of llvm ir.
+"><meta property="og:image" content="https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png">
+<meta property="twitter:image" content="https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
+<meta property="article:published_time" content="2015-11-04T11:51:39+08:00">
+<meta property="article:modified_time" content="2022-02-02T01:23:23+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://wooya.me/post/rust-enum/"},"headline":"Rust Enum","datePublished":"2015-11-04T11:51:39+08:00","dateModified":"2022-02-02T01:23:23Z","publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"}},"description":"We analyzed the memory structure of rust in this article through the perspective of llvm ir.\n"}</script>
+<title>Rust Enum | Ya!</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=1a1383632f7a92dc16caac27f234186e>
+<script src=/js/wowchemy-init.min.8f76bdc9e086322ed5147724ebba3d06.js></script>
+<aside class=search-modal id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=# aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<div class=page-header>
+<header class=header--fixed>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container-xl>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=/>Ya!</a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=/>Ya!</a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class=nav-item>
+<a class=nav-link href=/#about><span>Home</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#publications><span>Publications</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#posts><span>Posts</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#projects><span>Projects</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#talks><span>Talks</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#contact><span>Contact</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/files/CV.pdf><span>CV</span></a>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+<li class="nav-item dropdown theme-dropdown">
+<a href=# class=nav-link data-toggle=dropdown aria-haspopup=true aria-label="Display preferences">
+<i class="fas fa-moon" aria-hidden=true></i>
+</a>
+<div class=dropdown-menu>
+<a href=# class="dropdown-item js-set-theme-light">
+<span>Light</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-dark">
+<span>Dark</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-auto">
+<span>Automatic</span>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+</div>
+<div class=page-body>
+<article class=article>
+<div class="article-container pt-3">
+<h1>Rust Enum</h1>
+<div class=article-metadata>
+<span class=article-date>
+Last updated on
+Feb 2, 2022
+</span>
+<span class=middot-divider></span>
+<span class=article-reading-time>
+3 min read
+</span>
+<span class=middot-divider></span>
+<span class=article-categories>
+<i class="fas fa-folder mr-1"></i><a href=/category/post/>post</a>, <a href=/category/rust/>rust</a></span>
+</div>
+</div>
+<div class=article-container>
+<div class=article-style>
+<p>本文通过解析<code>llvm</code>的<code>ir</code>来解析rust <code>enum</code>的内存布局。</p>
+<p>rust的enum差不多是C的<code>enum</code>和<code>union</code>类型的混合体。可以写成</p>
+<pre><code class=language-rust>enum Enum {
     AEnum = 0,
     BEnum = 1,
     CEnum = 2,
 }  // 类似C的Enum
-</code></pre><p>也可以</p><pre><code class=language-rust> enum Buk {
+</code></pre>
+<p>也可以</p>
+<pre><code class=language-rust> enum Buk {
     two_int(int,int),
     three_uint(uint,uint,uint),
     lonely_f64(f64),
 } // 类似union
-</code></pre><p>甚至</p><pre><code class=language-rust>enum LinkedListNode&lt;T&gt; {
+</code></pre>
+<p>甚至</p>
+<pre><code class=language-rust>enum LinkedListNode&lt;T&gt; {
     DataOnly(T),
     DataWithNext(T,Box&lt;LinkedListNode&lt;T&gt;&gt;),
 }
-</code></pre><p>总之，利用rust的enum，可以任意的构造想要的抽象数据结构。
-在另一些语言中，这种数据结构叫做ADT(algebra data type, 代数数据类型)。</p><p>===============================================</p><ul><li>最普通的enum。</li></ul><p>有如下结构：</p><pre><code class=language-rust>enum simple {
+</code></pre>
+<p>总之，利用rust的enum，可以任意的构造想要的抽象数据结构。
+在另一些语言中，这种数据结构叫做ADT(algebra data type, 代数数据类型)。</p>
+<p>===============================================</p>
+<ul>
+<li>最普通的enum。</li>
+</ul>
+<p>有如下结构：</p>
+<pre><code class=language-rust>enum simple {
     A,B,C,D
 }
-</code></pre><p>在rust编译完以后，完全不会为simple生成任何的数据结构。
-<code>let a = A</code> 只会被rust编译成 <code>let a: i8 = 0</code>。同理，B就是1i8，C就是2i8.</p><p>同理</p><pre><code class=language-rust>enum simple {
+</code></pre>
+<p>在rust编译完以后，完全不会为simple生成任何的数据结构。
+<code>let a = A</code> 只会被rust编译成 <code>let a: i8 = 0</code>。同理，B就是1i8，C就是2i8.</p>
+<p>同理</p>
+<pre><code class=language-rust>enum simple {
      A = 1,
      B = 2,
      C = 3,
      D = 4,
 }
-</code></pre><p>也只是把<code>let a = 0i8</code>变成了<code>let a = 1i8</code>而已。</p><p>match这样一个最简单的enum，rust所做的仅仅只有一个简单的对i8的switch语句。</p><ul><li>union like enum</li></ul><p>考虑如下enum：</p><pre><code class=language-rust>enum simple {
+</code></pre>
+<p>也只是把<code>let a = 0i8</code>变成了<code>let a = 1i8</code>而已。</p>
+<p>match这样一个最简单的enum，rust所做的仅仅只有一个简单的对i8的switch语句。</p>
+<ul>
+<li>union like enum</li>
+</ul>
+<p>考虑如下enum：</p>
+<pre><code class=language-rust>enum simple {
      A(i32,i64),
      B(u8),
      C(f32),
 }
-</code></pre><p>这时，这个enum的llvm内存表示为<code>{ i8, [7 x i8], [1 x i64] }</code>，用rust来表示就是<code>(i8,i8,i8,i8,i8,i8,i8,i8,i64)</code></p><p>一共8个i8，一个i64.
+</code></pre>
+<p>这时，这个enum的llvm内存表示为<code>{ i8, [7 x i8], [1 x i64] }</code>，用rust来表示就是<code>(i8,i8,i8,i8,i8,i8,i8,i8,i64)</code></p>
+<p>一共8个i8，一个i64.
 可能会纳闷：怎么会有那么多i8呢？
-原因在于：内存对齐。</p><p>首先，enum的标号肯定位于头部，就是第一个i8.因此A还是0，B还是1.
+原因在于：内存对齐。</p>
+<p>首先，enum的标号肯定位于头部，就是第一个i8.因此A还是0，B还是1.
 但是和例1不同的是，本例中的enum是带有自定义数据的。所以必须为自定义数据分配空间。
 我们来算一下：一共需要1<em>i8（用于标号）+1</em>i32（A的第一个域）+1<em>64（A的第二个域）。B和C我们就不管了，因为它们的大小都小于A，因此我们可以复用A的内存空间。所以这样一个enum至少需要104个bit。但是由于内存对齐的原因，第一个i8要和后面的i64对齐，所以要补上7个i8，因为7</em>8+8=64嘛。
-补完之后我们发现，那个i32也可以被用来补完的7个i8来表示了（4个i8凑一凑就一个i32了嘛）。于是这个enum就是8个i8+1个i64组成了。</p><p>现在来看看当它们分别是A，B，C时的情况。
+补完之后我们发现，那个i32也可以被用来补完的7个i8来表示了（4个i8凑一凑就一个i32了嘛）。于是这个enum就是8个i8+1个i64组成了。</p>
+<p>现在来看看当它们分别是A，B，C时的情况。
 当enum是A的时候，它的结构会转换成{i8, i32,
 i64}.第一个用于标号，是0.第二个是A的第一个域，i32，i64是第二个域。用于内存对齐的i8被llvm自动藏起来了。完整的表示是{i8,
 [3 x i8], i32, i64}，中间3个i8会隐藏掉。
 当enum是B的时候，结构就变成了{i8,i8}后面的一大堆东西统统不要。所以如果一个enum要是被这样构造了，每一个B都会浪费大量的空间（空间使用率16/128=12.5%）。对于单片机编程来说要尽量避免这种情况。
-当enum是C的时候，结构是{i8,float},[3xi8]同A，会隐藏起来。后面浪费了一个i64.利用率50%，也挺低。</p><ul><li>1和2混搭</li></ul><p>如下enum：</p><pre><code class=language-rust>enum simple {
+当enum是C的时候，结构是{i8,float},[3xi8]同A，会隐藏起来。后面浪费了一个i64.利用率50%，也挺低。</p>
+<ul>
+<li>1和2混搭</li>
+</ul>
+<p>如下enum：</p>
+<pre><code class=language-rust>enum simple {
      A(i32,i64),
      B(u8),
      C(f32),
      D,
      E
 }
-</code></pre><p>具体情况和union enum差不多。后面两个D和E变成{i8}罢了。</p><ul><li>泛型enum</li></ul><pre><code class=language-rust> enum simple&lt;T&gt; {
+</code></pre>
+<p>具体情况和union enum差不多。后面两个D和E变成{i8}罢了。</p>
+<ul>
+<li>泛型enum</li>
+</ul>
+<pre><code class=language-rust> enum simple&lt;T&gt; {
       Data(T),
      Nil
 }
 let a = simple::Data::&lt;int&gt;(1);
 let b = simple::Nil::&lt;uint&gt;;
-</code></pre><p>泛型其实只是生成了两份代码，一个叫<code>%"enum.main::simple&lt;[int]>" = type { i8, [7 x i8], [1 x i64] }</code>，
-另一个叫<code>%"enum.main::simple&lt;[uint]>" = type { i8, [7 x i8], [1 x i64] }</code>，其它无任何差别。</p><ul><li>struct variant</li></ul><pre><code class=language-rust>enum simple {
+</code></pre>
+<p>泛型其实只是生成了两份代码，一个叫<code>%"enum.main::simple&lt;[int]>" = type { i8, [7 x i8], [1 x i64] }</code>，
+另一个叫<code>%"enum.main::simple&lt;[uint]>" = type { i8, [7 x i8], [1 x i64] }</code>，其它无任何差别。</p>
+<ul>
+<li>struct variant</li>
+</ul>
+<pre><code class=language-rust>enum simple {
      duck {a: int, b: int},
      Nil
 }
 let a = simple::duck{a:4,b:3};
-</code></pre><p>和普通的enum一样，只是给duck里面的两个i64起个名字罢了。在ir层面没有任何区别。</p><ul><li>#[repr(C)]</li></ul><p>rust还支持把enum的内存表示变为C风格的。</p><pre><code class=language-rust>#[repr(C)]
+</code></pre>
+<p>和普通的enum一样，只是给duck里面的两个i64起个名字罢了。在ir层面没有任何区别。</p>
+<ul>
+<li>#[repr(C)]</li>
+</ul>
+<p>rust还支持把enum的内存表示变为C风格的。</p>
+<pre><code class=language-rust>#[repr(C)]
 enum simple {
      a(int),
      b,c
 }
-</code></pre><p>这儿的区别在于，头部的标号和内存对齐，全部从i8变成了i32，即C的int。<code>{i32, [1 x i32], i64}</code></p></div><div class=article-tags><a class="badge badge-light" href=/tags/enum/>enum</a>
-<a class="badge badge-light" href=/tags/memory-detail/>memory detail</a></div><div class=share-box aria-hidden=true><ul class=share><li><a href="https://twitter.com/intent/tweet?url=https://wooya.me/post/rust-enum/&text=Rust%20Enum" target=_blank rel=noopener class=share-btn-twitter><i class="fab fa-twitter"></i></a></li><li><a href="https://www.facebook.com/sharer.php?u=https://wooya.me/post/rust-enum/&t=Rust%20Enum" target=_blank rel=noopener class=share-btn-facebook><i class="fab fa-facebook"></i></a></li><li><a href="mailto:?subject=Rust%20Enum&body=https://wooya.me/post/rust-enum/" target=_blank rel=noopener class=share-btn-email><i class="fas fa-envelope"></i></a></li><li><a href="https://www.linkedin.com/shareArticle?url=https://wooya.me/post/rust-enum/&title=Rust%20Enum" target=_blank rel=noopener class=share-btn-linkedin><i class="fab fa-linkedin-in"></i></a></li><li><a href="whatsapp://send?text=Rust%20Enum%20https://wooya.me/post/rust-enum/" target=_blank rel=noopener class=share-btn-whatsapp><i class="fab fa-whatsapp"></i></a></li><li><a href="https://service.weibo.com/share/share.php?url=https://wooya.me/post/rust-enum/&title=Rust%20Enum" target=_blank rel=noopener class=share-btn-weibo><i class="fab fa-weibo"></i></a></li></ul></div><div class="media author-card content-widget-hr"><a href=https://wooya.me/><img class="avatar mr-3 avatar-circle" src=/authors/admin/avatar_hu8a11246a0c27486576f53a59e6ad776a_8861979_270x270_fill_q90_lanczos_center.JPG alt></a><div class=media-body><h5 class=card-title><a href=https://wooya.me/></a></h5><h6 class=card-subtitle>PhD Student in Computing Science</h6><p class=card-text>PhD Student @ SFU</p><ul class=network-icon aria-hidden=true><li><a href=mailto:youngw@sfu.ca><i class="fas fa-envelope"></i></a></li><li><a href=https://github.com/dovahcrow target=_blank rel=noopener><i class="fab fa-github"></i></a></li></ul></div></div><section id=comments><div id=disqus_thread></div><script>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
-var d=document,s=d.createElement('script');s.async=true;s.src='https://'+"wooyame"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></section></div></article></div><div class=page-footer><div class=container><footer class=site-footer><p class=powered-by>© 2020 Weiyuan</p><p class=powered-by>Published with
-<a href=https://wowchemy.com target=_blank rel=noopener>Wowchemy</a> —
-the free, <a href=https://github.com/wowchemy/wowchemy-hugo-modules target=_blank rel=noopener>open source</a> website builder that empowers creators.</p></footer></div></div><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i>Copy</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i>Download</a><div id=modal-error></div></div></div></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.0/mermaid.min.js integrity="sha512-ja+hSBi4JDtjSqc4LTBsSwuBT3tdZ3oKYKd07lTVYmCnTCor56AnRql00ssqnTOR9Ss4gOP/ROGB3SfcJnZkeg==" crossorigin=anonymous title=mermaid></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin=anonymous></script><script>const code_highlighting=true;</script><script>const search_config={"indexURI":"/index.json","minLength":1,"threshold":0.3};const i18n={"no_results":"No results found","placeholder":"Search...","results":"results found"};const content_type={'post':"Posts",'project':"Projects",'publication':"Publications",'talk':"Talks",'slides':"Slides"};</script><script id=search-hit-fuse-template type=text/x-template>
-      <div class="search-hit" id="summary-{{key}}">
-      <div class="search-hit-content">
-        <div class="search-hit-name">
-          <a href="{{relpermalink}}">{{title}}</a>
-          <div class="article-metadata search-hit-type">{{type}}</div>
-          <p class="search-hit-description">{{snippet}}</p>
+</code></pre>
+<p>这儿的区别在于，头部的标号和内存对齐，全部从i8变成了i32，即C的int。<code>{i32, [1 x i32], i64}</code></p>
+</div>
+<div class=article-tags>
+<a class="badge badge-light" href=/tag/enum/>enum</a>
+<a class="badge badge-light" href=/tag/memory-detail/>memory detail</a>
+</div>
+<div class=share-box>
+<ul class=share>
+<li>
+<a href="https://twitter.com/intent/tweet?url=https://wooya.me/post/rust-enum/&text=Rust%20Enum" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="https://www.facebook.com/sharer.php?u=https://wooya.me/post/rust-enum/&t=Rust%20Enum" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
+<i class="fab fa-facebook"></i>
+</a>
+</li>
+<li>
+<a href="mailto:?subject=Rust%20Enum&body=https://wooya.me/post/rust-enum/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/shareArticle?url=https://wooya.me/post/rust-enum/&title=Rust%20Enum" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
+<i class="fab fa-linkedin-in"></i>
+</a>
+</li>
+<li>
+<a href="whatsapp://send?text=Rust%20Enum%20https://wooya.me/post/rust-enum/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
+<i class="fab fa-whatsapp"></i>
+</a>
+</li>
+<li>
+<a href="https://service.weibo.com/share/share.php?url=https://wooya.me/post/rust-enum/&title=Rust%20Enum" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
+<i class="fab fa-weibo"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="media author-card content-widget-hr">
+<a href=https://wooya.me/><img class="avatar mr-3 avatar-circle" src=/authors/admin/avatar_hu8a11246a0c27486576f53a59e6ad776a_8861979_270x270_fill_q90_lanczos_center.JPG alt></a>
+<div class=media-body>
+<h5 class=card-title><a href=https://wooya.me/></a></h5>
+<h6 class=card-subtitle>PhD Student in Computing Science</h6>
+<p class=card-text>PhD Student @ SFU</p>
+<ul class=network-icon aria-hidden=true>
+<li>
+<a href=mailto:youngw@sfu.ca>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+<li>
+<a href=https://github.com/dovahcrow target=_blank rel=noopener>
+<i class="fab fa-github"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="article-widget content-widget-hr">
+<h3>Related</h3>
+<ul>
+<li><a href=/post/rust-compiler-plugin/>Rust Compiler Plugin</a></li>
+<li><a href=/post/rust-inline-asm/>Rust Inline ASM</a></li>
+<li><a href=/post/rust-object/>Rust Object</a></li>
+<li><a href=/post/rust-phantom-type/>Talk About Phantom Type</a></li>
+</ul>
+</div>
+</div>
+</article>
+</div>
+<div class=page-footer>
+<div class=container>
+<footer class=site-footer>
+<p class=powered-by>
+© 2022 Weiyuan
+</p>
+<p class=powered-by>
+Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
+</p>
+</footer>
+</div>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+<script src=/js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script src=https://cdn.jsdelivr.net/gh/desandro/imagesloaded@v4.1.4/imagesloaded.pkgd.min.js integrity="sha512-S5PZ9GxJZO16tT9r3WJp/Safn31eu8uWrzglMahDT4dsmgqWonRY9grk3j+3tfuPr9WJNsfooOR7Gi7HL5W2jw==" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/gh/metafizzy/isotope@v3.0.6/dist/isotope.pkgd.min.js integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js crossorigin=anonymous></script>
+<script id=search-hit-fuse-template type=text/x-template>
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
-    </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script id=dsq-count-scr src=https://wooyame.disqus.com/count.js async></script><script src=/js/wowchemy.min.d9d80f811e95b4b4f6df1eaaf297b05f.js></script></body></html>
+      </script>
+<script src=https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin=anonymous></script>
+<script id=page-data type=application/json>{"use_headroom":true}</script>
+<script src=/js/wowchemy-headroom.1b758ae7be2cd5f80a2b6d98b3811fc0.js type=module></script>
+<script src=/en/js/wowchemy.min.247fd8f54253895301106e3006f53f38.js></script>
+</body>
+</html>
