@@ -2,6 +2,10 @@
 title: "DataPrep.EDA: Task-Centric Exploratory Data Analysis for Statistical Modeling in Python"
 authors: [Jinglin Peng, Weiyuan Wu, Brandon Lockhart, Song Bian, Jing Nathan Yan, Linghao Xu, Zhixuan Chi, Jeffrey Rzeszotarski, Jiannan Wang]
 
+author_notes:
+- "Equal contribution"
+- "Equal contribution"
+
 date: "2021-06-15"
 doi: ""
 
@@ -33,6 +37,8 @@ featured: false
 links:
   - name: arXiv
     url: https://arxiv.org/abs/2104.00841
+
+url_pdf: https://arxiv.org/pdf/2104.00841
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 

@@ -3,9 +3,14 @@ title: "Are We Ready For Learned Cardinality Estimation?"
 authors:
   - Xiaoying Wang
   - Changbo Qu
-  - admin
+  - Weiyuan Wu
   - Jiannan Wang
   - Qingqing Zhou
+
+author_notes:
+- "Equal contribution"
+- "Equal contribution"
+- "Equal contribution"
 
 date: "2021-04-15"
 doi: ""
@@ -34,7 +39,7 @@ tags:
 
 featured: false
 
-url_pdf: files/CE.pdf
+url_pdf: http://www.vldb.org/pvldb/vol14/p1640-wang.pdf
 
 links:
   - name: arXiv

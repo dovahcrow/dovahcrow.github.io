@@ -1,7 +1,7 @@
 ---
 title: "Complaint-driven Training Data Debugging for Query 2.0"
 authors:
-  - admin
+  - Weiyuan Wu
   - Lampros Flokas
   - Eugene Wu
   - Jiannan Wang
@@ -41,14 +41,14 @@ summary: ""
 tags:
 - Data Cleaning
 - Data Debugging
+- ML Debugging
 featured: false
-
-url_pdf: files/Rain-arXiv.pdf
 
 links:
   - name: arXiv
     url: https://arxiv.org/abs/2004.05722
-# url_pdf: http://arxiv.org/pdf/1512.04133v1
+    
+url_pdf: http://arxiv.org/pdf/2004.05722
 # url_code: '#'
 # url_dataset: '#'
 # url_poster: '#'

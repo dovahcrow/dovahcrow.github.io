@@ -21,10 +21,9 @@ organizations:
 bio: PhD Student @ SFU
 
 interests:
-- Data Management
 - ML Debugging
-- Optimization
-- Applied Machine Learning
+- Data Intensive System
+- Blockchain and Decentralized Finance
 
 # List your qualifications (such as academic degrees).
 education:
@@ -66,11 +65,10 @@ email: "youngw@sfu.com"
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups: []
+highlight_name: true
 ---
 
 Weiyuan is a PhD student at SFU right now. His research interests include 
-Data Management, ML Debugging and applying Machine Learning to real problems.
-
-He took a gap year working in Strikingly @ Shanghai, as a Data Scientist.
+ML Debugging and building Data Intensive Systems.
 
 He can be found at SFU Database System Lab.

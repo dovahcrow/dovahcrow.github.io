@@ -33,6 +33,8 @@ links:
   - name: arXiv
     url: https://arxiv.org/abs/2102.05308
 
+url_pdf: https://arxiv.org/pdf/2102.05308
+
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 image:

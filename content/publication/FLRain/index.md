@@ -2,11 +2,15 @@
 title: "Enabling SQL-based Training Data Debugging for Federated Learning"
 authors:
   - Yejia Liu
-  - admin
+  - Weiyuan Wu
   - Lampros Flokas
   - Jiannan Wang
   - Eugene Wu
 
+author_notes:
+- "Equal contribution"
+- "Equal contribution"
+  
 date: "2021-06-15"
 doi: ""
 
@@ -32,12 +36,14 @@ summary: ""
 tags:
 - Data Cleaning
 - Data Debugging
-
+- Federated Learning
 featured: false
 
 links:
   - name: arXiv
     url: https://arxiv.org/abs/2108.11884
+
+url_pdf: https://arxiv.org/pdf/2108.11884.pdf
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
