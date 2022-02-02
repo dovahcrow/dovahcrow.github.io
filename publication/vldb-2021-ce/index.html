@@ -28,8 +28,8 @@
 "><meta property="og:image" content="https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png">
 <meta property="twitter:image" content="https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
 <meta property="article:published_time" content="2021-04-15T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-02T01:23:23+00:00">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://wooya.me/publication/vldb-2021-ce/"},"headline":"Are We Ready For Learned Cardinality Estimation?","datePublished":"2021-04-15T00:00:00Z","dateModified":"2022-02-02T01:23:23Z","author":{"@type":"Person","name":"Xiaoying Wang"},"publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"}},"description":"Cardinality estimation is a fundamental but long unresolved problem in query optimization. Recently, multiple papers from different research groups consistently report that learned models have the potential to replace existing cardinality estimators. In this paper, we ask a forward-thinking question: Are we ready to deploy these learned cardinality models in production? Our study consists of three main parts. Firstly, we focus on the static environment (i.e., no data updates) and compare five new learned methods with eight traditional methods on four real-world datasets under a unified workload setting. The results show that learned models are indeed more accurate than traditional methods, but they often suffer from high training and inference costs. Secondly, we explore whether these learned models are ready for dynamic environments (i.e., frequent data updates). We find that they cannot catch up with fast data up-dates and return large errors for different reasons. For less frequent updates, they can perform better but there is no clear winner among themselves. Thirdly, we take a deeper look into learned models and explore when they may go wrong. Our results show that the performance of learned methods can be greatly affected by the changes in correlation, skewness, or domain size. More importantly, their behaviors are much harder to interpret and often unpredictable. Based on these findings, we identify two promising research directions (control the cost of learned models and make learned models trustworthy) and suggest a number of research opportunities. We hope that our study can guide researchers and practitioners to work together to eventually push learned cardinality estimators into real database systems.\n"}</script>
+<meta property="article:modified_time" content="2022-02-02T02:22:08+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://wooya.me/publication/vldb-2021-ce/"},"headline":"Are We Ready For Learned Cardinality Estimation?","datePublished":"2021-04-15T00:00:00Z","dateModified":"2022-02-02T02:22:08Z","author":{"@type":"Person","name":"Xiaoying Wang"},"publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://wooya.me/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_192x192_fill_lanczos_center_3.png"}},"description":"Cardinality estimation is a fundamental but long unresolved problem in query optimization. Recently, multiple papers from different research groups consistently report that learned models have the potential to replace existing cardinality estimators. In this paper, we ask a forward-thinking question: Are we ready to deploy these learned cardinality models in production? Our study consists of three main parts. Firstly, we focus on the static environment (i.e., no data updates) and compare five new learned methods with eight traditional methods on four real-world datasets under a unified workload setting. The results show that learned models are indeed more accurate than traditional methods, but they often suffer from high training and inference costs. Secondly, we explore whether these learned models are ready for dynamic environments (i.e., frequent data updates). We find that they cannot catch up with fast data up-dates and return large errors for different reasons. For less frequent updates, they can perform better but there is no clear winner among themselves. Thirdly, we take a deeper look into learned models and explore when they may go wrong. Our results show that the performance of learned methods can be greatly affected by the changes in correlation, skewness, or domain size. More importantly, their behaviors are much harder to interpret and often unpredictable. Based on these findings, we identify two promising research directions (control the cost of learned models and make learned models trustworthy) and suggest a number of research opportunities. We hope that our study can guide researchers and practitioners to work together to eventually push learned cardinality estimators into real database systems.\n"}</script>
 <title>Are We Ready For Learned Cardinality Estimation? | Ya!</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=26100ba8e8bac6489f2a55cbb32b0c12>
@@ -125,9 +125,9 @@
 <div class=article-metadata>
 <div>
 <span>
-<a href=/authors/xiaoying-wang/>Xiaoying Wang</a></span>, <span>
-<a href=/authors/changbo-qu/>Changbo Qu</a></span>, <span>
-<a href=/authors/admin/></a></span>, <span>
+<a href=/authors/xiaoying-wang/>Xiaoying Wang</a></span><i class="author-notes fas fa-info-circle" data-toggle=tooltip title="Equal contribution"></i>, <span>
+<a href=/authors/changbo-qu/>Changbo Qu</a></span><i class="author-notes fas fa-info-circle" data-toggle=tooltip title="Equal contribution"></i>, <span>
+<a href=/authors/weiyuan-wu/>Weiyuan Wu</a></span><i class="author-notes fas fa-info-circle" data-toggle=tooltip title="Equal contribution"></i>, <span>
 <a href=/authors/jiannan-wang/>Jiannan Wang</a></span>, <span>
 <a href=/authors/qingqing-zhou/>Qingqing Zhou</a></span>
 </div>
@@ -136,7 +136,7 @@ April 2021
 </span>
 </div>
 <div class="btn-links mb-3">
-<a class="btn btn-outline-primary btn-page-header" href=/files/CE.pdf target=_blank rel=noopener>
+<a class="btn btn-outline-primary btn-page-header" href=http://www.vldb.org/pvldb/vol14/p1640-wang.pdf target=_blank rel=noopener>
 PDF
 </a>
 <a class="btn btn-outline-primary btn-page-header" href=https://arxiv.org/pdf/2012.06743.pdf target=_blank rel=noopener>
@@ -210,26 +210,6 @@ Conference paper
 </a>
 </li>
 </ul>
-</div>
-<div class="media author-card content-widget-hr">
-<a href=https://wooya.me/><img class="avatar mr-3 avatar-circle" src=/authors/admin/avatar_hu8a11246a0c27486576f53a59e6ad776a_8861979_270x270_fill_q90_lanczos_center.JPG alt></a>
-<div class=media-body>
-<h5 class=card-title><a href=https://wooya.me/></a></h5>
-<h6 class=card-subtitle>PhD Student in Computing Science</h6>
-<p class=card-text>PhD Student @ SFU</p>
-<ul class=network-icon aria-hidden=true>
-<li>
-<a href=mailto:youngw@sfu.ca>
-<i class="fas fa-envelope"></i>
-</a>
-</li>
-<li>
-<a href=https://github.com/dovahcrow target=_blank rel=noopener>
-<i class="fab fa-github"></i>
-</a>
-</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
