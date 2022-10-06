@@ -9,7 +9,7 @@
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media=print onload="this.media='all'">
 <meta name=description content="Exploratory Data Analysis (EDA) is a crucial step in any data science project. However, existing Python libraries fall short in supporting data scientists to complete common EDA tasks for statistical modeling. Their API design is either too low level, which is optimized for plotting rather than EDA, or too high level, which is hard to specify more fine-grained EDA tasks. In response, we propose DataPrep.EDA, a novel task-centric EDA system in Python. DataPrep.EDA allows data scientists to declaratively specify a wide range of EDA tasks in different granularity with a single function call. We identify a number of challenges to implement DataPrep.EDA, and propose effective solutions to improve the scalability, usability, customizability of the system. In particular, we discuss some lessons learned from using Dask to build the data processing pipelines for EDA tasks and describe our approaches to accelerate the pipelines. We conduct extensive experiments to compare DataPrep.EDA with Pandas-profiling, the state-of-the-art EDA system in Python. The experiments show that DataPrep.EDA significantly outperforms Pandas-profiling in terms of both speed and user experience. DataPrep.EDA is open-sourced as an EDA component of DataPrep: this https URL.
 ">
-<link rel=alternate hreflang=en-us href=https://wooya.me/publication/dataprep.eda/>
+<link rel=alternate hreflang=en-us href=https://crows.land/publication/dataprep.eda/>
 <meta name=theme-color content="#1565c0">
 <link rel=stylesheet href=/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin=anonymous media=print onload="this.media='all'">
@@ -19,17 +19,17 @@
 <link rel=manifest href=/manifest.webmanifest>
 <link rel=icon type=image/png href=/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://wooya.me/publication/dataprep.eda/>
+<link rel=canonical href=https://crows.land/publication/dataprep.eda/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Ya!">
-<meta property="og:url" content="https://wooya.me/publication/dataprep.eda/">
+<meta property="og:url" content="https://crows.land/publication/dataprep.eda/">
 <meta property="og:title" content="DataPrep.EDA: Task-Centric Exploratory Data Analysis for Statistical Modeling in Python | Ya!">
 <meta property="og:description" content="Exploratory Data Analysis (EDA) is a crucial step in any data science project. However, existing Python libraries fall short in supporting data scientists to complete common EDA tasks for statistical modeling. Their API design is either too low level, which is optimized for plotting rather than EDA, or too high level, which is hard to specify more fine-grained EDA tasks. In response, we propose DataPrep.EDA, a novel task-centric EDA system in Python. DataPrep.EDA allows data scientists to declaratively specify a wide range of EDA tasks in different granularity with a single function call. We identify a number of challenges to implement DataPrep.EDA, and propose effective solutions to improve the scalability, usability, customizability of the system. In particular, we discuss some lessons learned from using Dask to build the data processing pipelines for EDA tasks and describe our approaches to accelerate the pipelines. We conduct extensive experiments to compare DataPrep.EDA with Pandas-profiling, the state-of-the-art EDA system in Python. The experiments show that DataPrep.EDA significantly outperforms Pandas-profiling in terms of both speed and user experience. DataPrep.EDA is open-sourced as an EDA component of DataPrep: this https URL.
-"><meta property="og:image" content="https://wooya.me/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png">
-<meta property="twitter:image" content="https://wooya.me/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
+"><meta property="og:image" content="https://crows.land/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png">
+<meta property="twitter:image" content="https://crows.land/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
 <meta property="article:published_time" content="2021-06-15T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-10-06T02:05:30+00:00">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://wooya.me/publication/dataprep.eda/"},"headline":"DataPrep.EDA: Task-Centric Exploratory Data Analysis for Statistical Modeling in Python","datePublished":"2021-06-15T00:00:00Z","dateModified":"2022-10-06T02:05:30Z","author":{"@type":"Person","name":"Jinglin Peng"},"publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://wooya.me/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_192x192_fill_lanczos_center_3.png"}},"description":"Exploratory Data Analysis (EDA) is a crucial step in any data science project. However, existing Python libraries fall short in supporting data scientists to complete common EDA tasks for statistical modeling. Their API design is either too low level, which is optimized for plotting rather than EDA, or too high level, which is hard to specify more fine-grained EDA tasks. In response, we propose DataPrep.EDA, a novel task-centric EDA system in Python. DataPrep.EDA allows data scientists to declaratively specify a wide range of EDA tasks in different granularity with a single function call. We identify a number of challenges to implement DataPrep.EDA, and propose effective solutions to improve the scalability, usability, customizability of the system. In particular, we discuss some lessons learned from using Dask to build the data processing pipelines for EDA tasks and describe our approaches to accelerate the pipelines. We conduct extensive experiments to compare DataPrep.EDA with Pandas-profiling, the state-of-the-art EDA system in Python. The experiments show that DataPrep.EDA significantly outperforms Pandas-profiling in terms of both speed and user experience. DataPrep.EDA is open-sourced as an EDA component of DataPrep: this https URL.\n"}</script>
+<meta property="article:modified_time" content="2022-10-06T02:15:32+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://crows.land/publication/dataprep.eda/"},"headline":"DataPrep.EDA: Task-Centric Exploratory Data Analysis for Statistical Modeling in Python","datePublished":"2021-06-15T00:00:00Z","dateModified":"2022-10-06T02:15:32Z","author":{"@type":"Person","name":"Jinglin Peng"},"publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://crows.land/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_192x192_fill_lanczos_center_3.png"}},"description":"Exploratory Data Analysis (EDA) is a crucial step in any data science project. However, existing Python libraries fall short in supporting data scientists to complete common EDA tasks for statistical modeling. Their API design is either too low level, which is optimized for plotting rather than EDA, or too high level, which is hard to specify more fine-grained EDA tasks. In response, we propose DataPrep.EDA, a novel task-centric EDA system in Python. DataPrep.EDA allows data scientists to declaratively specify a wide range of EDA tasks in different granularity with a single function call. We identify a number of challenges to implement DataPrep.EDA, and propose effective solutions to improve the scalability, usability, customizability of the system. In particular, we discuss some lessons learned from using Dask to build the data processing pipelines for EDA tasks and describe our approaches to accelerate the pipelines. We conduct extensive experiments to compare DataPrep.EDA with Pandas-profiling, the state-of-the-art EDA system in Python. The experiments show that DataPrep.EDA significantly outperforms Pandas-profiling in terms of both speed and user experience. DataPrep.EDA is open-sourced as an EDA component of DataPrep: this https URL.\n"}</script>
 <title>DataPrep.EDA: Task-Centric Exploratory Data Analysis for Statistical Modeling in Python | Ya!</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=de5483a71a8f8349ade04aae9e2e9f56>
@@ -182,32 +182,32 @@ Conference paper
 <div class=share-box>
 <ul class=share>
 <li>
-<a href="https://twitter.com/intent/tweet?url=https://wooya.me/publication/dataprep.eda/&text=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
+<a href="https://twitter.com/intent/tweet?url=https://crows.land/publication/dataprep.eda/&text=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
 <i class="fab fa-twitter"></i>
 </a>
 </li>
 <li>
-<a href="https://www.facebook.com/sharer.php?u=https://wooya.me/publication/dataprep.eda/&t=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
+<a href="https://www.facebook.com/sharer.php?u=https://crows.land/publication/dataprep.eda/&t=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
 <i class="fab fa-facebook"></i>
 </a>
 </li>
 <li>
-<a href="mailto:?subject=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python&body=https://wooya.me/publication/dataprep.eda/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
+<a href="mailto:?subject=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python&body=https://crows.land/publication/dataprep.eda/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
 <i class="fas fa-envelope"></i>
 </a>
 </li>
 <li>
-<a href="https://www.linkedin.com/shareArticle?url=https://wooya.me/publication/dataprep.eda/&title=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
+<a href="https://www.linkedin.com/shareArticle?url=https://crows.land/publication/dataprep.eda/&title=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
 <i class="fab fa-linkedin-in"></i>
 </a>
 </li>
 <li>
-<a href="whatsapp://send?text=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python%20https://wooya.me/publication/dataprep.eda/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
+<a href="whatsapp://send?text=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python%20https://crows.land/publication/dataprep.eda/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
 <i class="fab fa-whatsapp"></i>
 </a>
 </li>
 <li>
-<a href="https://service.weibo.com/share/share.php?url=https://wooya.me/publication/dataprep.eda/&title=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
+<a href="https://service.weibo.com/share/share.php?url=https://crows.land/publication/dataprep.eda/&title=DataPrep.EDA:%20Task-Centric%20Exploratory%20Data%20Analysis%20for%20Statistical%20Modeling%20in%20Python" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
 <i class="fab fa-weibo"></i>
 </a>
 </li>

@@ -8,7 +8,7 @@
 <link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
 <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media=print onload="this.media='all'">
 <meta name=description content="Using `nextaction-rs`, you can now mimic Omnifocus or MLO's nextaction behavior in Todoist!">
-<link rel=alternate hreflang=en-us href=https://wooya.me/post/todoist-nextaction/>
+<link rel=alternate hreflang=en-us href=https://crows.land/post/todoist-nextaction/>
 <meta name=theme-color content="#1565c0">
 <script src=/js/mathjax-config.js></script>
 <link rel=stylesheet href=/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
@@ -20,16 +20,16 @@
 <link rel=manifest href=/manifest.webmanifest>
 <link rel=icon type=image/png href=/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_32x32_fill_lanczos_center_3.png>
 <link rel=apple-touch-icon type=image/png href=/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_180x180_fill_lanczos_center_3.png>
-<link rel=canonical href=https://wooya.me/post/todoist-nextaction/>
+<link rel=canonical href=https://crows.land/post/todoist-nextaction/>
 <meta property="twitter:card" content="summary">
 <meta property="og:site_name" content="Ya!">
-<meta property="og:url" content="https://wooya.me/post/todoist-nextaction/">
+<meta property="og:url" content="https://crows.land/post/todoist-nextaction/">
 <meta property="og:title" content="Implementing Nextaction In Todoist | Ya!">
-<meta property="og:description" content="Using `nextaction-rs`, you can now mimic Omnifocus or MLO's nextaction behavior in Todoist!"><meta property="og:image" content="https://wooya.me/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png">
-<meta property="twitter:image" content="https://wooya.me/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
+<meta property="og:description" content="Using `nextaction-rs`, you can now mimic Omnifocus or MLO's nextaction behavior in Todoist!"><meta property="og:image" content="https://crows.land/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png">
+<meta property="twitter:image" content="https://crows.land/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
 <meta property="article:published_time" content="2017-04-06T17:41:28+08:00">
-<meta property="article:modified_time" content="2022-10-06T02:05:30+00:00">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://wooya.me/post/todoist-nextaction/"},"headline":"Implementing Nextaction In Todoist","datePublished":"2017-04-06T17:41:28+08:00","dateModified":"2022-10-06T02:05:30Z","publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://wooya.me/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_192x192_fill_lanczos_center_3.png"}},"description":"Using `nextaction-rs`, you can now mimic Omnifocus or MLO's nextaction behavior in Todoist!"}</script>
+<meta property="article:modified_time" content="2022-10-06T02:15:32+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://crows.land/post/todoist-nextaction/"},"headline":"Implementing Nextaction In Todoist","datePublished":"2017-04-06T17:41:28+08:00","dateModified":"2022-10-06T02:15:32Z","publisher":{"@type":"Organization","name":"Ya!","logo":{"@type":"ImageObject","url":"https://crows.land/media/icon_hu54ee143ef1e070b207dc27cd44346347_16508_192x192_fill_lanczos_center_3.png"}},"description":"Using `nextaction-rs`, you can now mimic Omnifocus or MLO's nextaction behavior in Todoist!"}</script>
 <title>Implementing Nextaction In Todoist | Ya!</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=5fb16b32cb4d19d002230f0c8919a08f>
@@ -191,41 +191,41 @@ So that your someday tasks won&rsquo;t show up on your nextaction list.</p>
 <div class=share-box>
 <ul class=share>
 <li>
-<a href="https://twitter.com/intent/tweet?url=https://wooya.me/post/todoist-nextaction/&text=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
+<a href="https://twitter.com/intent/tweet?url=https://crows.land/post/todoist-nextaction/&text=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
 <i class="fab fa-twitter"></i>
 </a>
 </li>
 <li>
-<a href="https://www.facebook.com/sharer.php?u=https://wooya.me/post/todoist-nextaction/&t=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
+<a href="https://www.facebook.com/sharer.php?u=https://crows.land/post/todoist-nextaction/&t=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
 <i class="fab fa-facebook"></i>
 </a>
 </li>
 <li>
-<a href="mailto:?subject=Implementing%20Nextaction%20In%20Todoist&body=https://wooya.me/post/todoist-nextaction/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
+<a href="mailto:?subject=Implementing%20Nextaction%20In%20Todoist&body=https://crows.land/post/todoist-nextaction/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
 <i class="fas fa-envelope"></i>
 </a>
 </li>
 <li>
-<a href="https://www.linkedin.com/shareArticle?url=https://wooya.me/post/todoist-nextaction/&title=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
+<a href="https://www.linkedin.com/shareArticle?url=https://crows.land/post/todoist-nextaction/&title=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
 <i class="fab fa-linkedin-in"></i>
 </a>
 </li>
 <li>
-<a href="whatsapp://send?text=Implementing%20Nextaction%20In%20Todoist%20https://wooya.me/post/todoist-nextaction/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
+<a href="whatsapp://send?text=Implementing%20Nextaction%20In%20Todoist%20https://crows.land/post/todoist-nextaction/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
 <i class="fab fa-whatsapp"></i>
 </a>
 </li>
 <li>
-<a href="https://service.weibo.com/share/share.php?url=https://wooya.me/post/todoist-nextaction/&title=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
+<a href="https://service.weibo.com/share/share.php?url=https://crows.land/post/todoist-nextaction/&title=Implementing%20Nextaction%20In%20Todoist" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
 <i class="fab fa-weibo"></i>
 </a>
 </li>
 </ul>
 </div>
 <div class="media author-card content-widget-hr">
-<a href=https://wooya.me/><img class="avatar mr-3 avatar-circle" src=/authors/admin/avatar_hu74bbffa4254b17983f8846d7c356765b_785974_270x270_fill_q90_lanczos_center.jpg alt></a>
+<a href=https://crows.land/><img class="avatar mr-3 avatar-circle" src=/authors/admin/avatar_hu74bbffa4254b17983f8846d7c356765b_785974_270x270_fill_q90_lanczos_center.jpg alt></a>
 <div class=media-body>
-<h5 class=card-title><a href=https://wooya.me/></a></h5>
+<h5 class=card-title><a href=https://crows.land/></a></h5>
 <h6 class=card-subtitle>PhD Student in Computing Science</h6>
 <p class=card-text>PhD Student @ SFU</p>
 <ul class=network-icon aria-hidden=true>
